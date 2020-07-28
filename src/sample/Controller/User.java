@@ -1,4 +1,6 @@
 package sample.Controller;
 
-public class Controller {
+public class User {
+
+
 }
