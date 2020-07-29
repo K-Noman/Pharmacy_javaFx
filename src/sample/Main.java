@@ -14,10 +14,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         //Parent root = FXMLLoader.load(getClass().getResource("View/LoginUser.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("View/AdminLogin.fxml"));
-        Parent root=FXMLLoader.load(getClass().getResource("View/MainScreen.fxml"));
+        Parent root= FXMLLoader.load(getClass().getResource("../View/MainScreen.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
     }
 
 
