@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -8,17 +7,8 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.User">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.userController">
    <children>
-      <Label layoutX="228.0" layoutY="30.0" text="User Menu">
-         <font>
-            <Font name="Cambria Math" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="254.0" layoutY="187.0" text="I am a user">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
+      <Label layoutX="300.0" layoutY="150.0" text="Uesjvanlv lv ," />
    </children>
 </AnchorPane>
