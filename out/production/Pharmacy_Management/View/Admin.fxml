@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.adminController">
    <children>
       <HBox prefHeight="25.0" prefWidth="206.0" AnchorPane.bottomAnchor="375.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -41,15 +42,18 @@
       </HBox>
       <BorderPane fx:id="borderPane" layoutX="1.0" layoutY="25.0" prefHeight="374.0" prefWidth="600.0">
          <top>
-            <Label fx:id="topLabel" alignment="TOP_CENTER" contentDisplay="TEXT_ONLY" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.7" text="The Label" textAlignment="CENTER" textFill="#a784ff" underline="true" BorderPane.alignment="TOP_CENTER">
+            <Label fx:id="topLabel" alignment="TOP_CENTER" contentDisplay="TEXT_ONLY" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.7" prefHeight="29.0" prefWidth="600.0" text="The Label" textAlignment="CENTER" textFill="#a784ff" underline="true" BorderPane.alignment="TOP_CENTER">
                <font>
-                  <Font name="Gabriola" size="36.0" />
+                  <Font name="Gabriola" size="32.0" />
                </font>
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
             </Label>
          </top>
+         <center>
+            <AnchorPane fx:id="centerAdmin" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>
