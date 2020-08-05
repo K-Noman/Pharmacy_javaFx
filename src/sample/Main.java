@@ -11,11 +11,13 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         //Main
-        //Parent root = FXMLLoader.load(getClass().getResource("../view/mainLogin.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("../view/mainLogin.fxml"));
         //Admin after login
-        Parent root = FXMLLoader.load(getClass().getResource("../view/Admin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../View/admin.fxml"));
         // Admin Employee
-       // Parent root = FXMLLoader.load(getClass().getResource("../view/adminEmployeeTab.fxml"));
+//       Parent root = FXMLLoader.load(getClass().getResource("../view/adminEmployeeTab.fxml"));
+        //Test
+//        Parent root = FXMLLoader.load(getClass().getResource("../View/Test.fxml"));
         primaryStage.setTitle("Pharmacy Management ");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

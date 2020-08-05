@@ -2,7 +2,6 @@
   <library name="ojdbc7">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../../../../app/ojdbc7.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../../../app/jfoenix-8.0.10.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

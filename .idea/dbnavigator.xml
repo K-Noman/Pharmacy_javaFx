@@ -23,18 +23,28 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
+        <schema name="APEX_040200" object-types="synonym, function, procedure" />
+        <schema name="PUBLIC" object-types="table, synonym, materialized view, view" />
+        <schema name="SYSTEM" object-types="table, synonym, materialized view, view" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="023f0662-fb4b-4d00-baea-97be9f059795">
-      <console name="Pharmacy" type="STANDARD" schema="SYSTEM" session="Main" />
+    <connection id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
+      <console name="Pharmacy" type="STANDARD" schema="SYSTEM" session="Main"><![CDATA[select * from SALES;
+select * from DRUGS;
+select * from EMP;
+select * from COMPANY;
+select * from PURCHASE;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="023f0662-fb4b-4d00-baea-97be9f059795" />
+    <connection id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -59,7 +69,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="023f0662-fb4b-4d00-baea-97be9f059795" active="true">
+      <connection id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d" active="true">
         <database>
           <name value="Pharmacy" />
           <description value="" />
@@ -74,7 +84,7 @@
           <port value="1521" />
           <database value="orcl" />
           <type value="USER_PASSWORD" />
-          <user value="system" />
+          <user value="System" />
           <deprecated-pwd value="T3JhY2xlXzE=" />
         </database>
         <properties>

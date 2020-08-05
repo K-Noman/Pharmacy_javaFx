@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminController">
+   <top>
+      <HBox prefHeight="16.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="backButton" onAction="#backButtonAction" text="&lt;-" />
+            <MenuBar HBox.hgrow="ALWAYS">
+              <menus>
+                <Menu mnemonicParsing="false" text="New">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#newEmployee" text="Employee" />
+                        <MenuItem mnemonicParsing="false" onAction="#newPurchase" text="Purchase" />
+                        <MenuItem mnemonicParsing="false" text="Company" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="View">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#employeeView" text="Employee" />
+                        <MenuItem mnemonicParsing="false" onAction="#salesView" text="Sales" />
+                        <MenuItem mnemonicParsing="false" onAction="#stockView" text="Stock" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <Label fx:id="label" text="Label" BorderPane.alignment="CENTER" />
+   </center>
+   <left>
+      <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
+   </left>
+   <bottom>
+      <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <right>
+      <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.mainController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <children>
+        <Label layoutX="150.0" layoutY="8.0" text="Pharmacy Management" textFill="#6473d3">
+            <font>
+                <Font name="Gabriola" size="41.0" />
+            </font>
+        </Label>
+        <Label layoutX="100.0" layoutY="116.0" text="Username">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="100.0" layoutY="180.0" text="Password">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="username" layoutX="226.0" layoutY="114.0" onKeyReleased="#loginBtnEnabler" promptText="Username" />
+        <PasswordField fx:id="password" layoutX="226.0" layoutY="178.0" />
+        <RadioButton fx:id="user" layoutX="193.0" layoutY="235.0" mnemonicParsing="false" selected="true" text="User">
+            <font>
+                <Font size="14.0" />
+            </font>
+            <padding>
+                <Insets bottom="10.0" />
+            </padding>
+            <toggleGroup>
+                <ToggleGroup fx:id="userAdmin" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="admin" layoutX="193.0" layoutY="255.0" mnemonicParsing="false" text="Admin" toggleGroup="$userAdmin">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </RadioButton>
+        <Button fx:id="loginBtn" layoutX="306.0" layoutY="235.0" mnemonicParsing="false" onAction="#loginAction" text="Login">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+    </children>
+
+</AnchorPane>
