@@ -25,19 +25,24 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
-        <schema name="APEX_040200" object-types="synonym, function, procedure" />
-        <schema name="PUBLIC" object-types="table, synonym, materialized view, view" />
-        <schema name="SYSTEM" object-types="table, synonym, materialized view, view" />
+        <schema name="PUBLIC" object-types="materialized view, package, function, sequence, type, view, table, synonym" />
+        <schema name="SYS" object-types="type" />
+        <schema name="SYSTEM" object-types="materialized view, package, function, sequence, type, view, table, synonym, column" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
-      <console name="Pharmacy" type="STANDARD" schema="SYSTEM" session="Main"><![CDATA[select * from SALES;
+      <console name="Pharmacy" type="STANDARD" schema="SYSTEM" session="Main">select * from SALES;
 select * from DRUGS;
 select * from EMP;
 select * from COMPANY;
-select * from PURCHASE;]]></console>
+select * from PURCHASE;
+select * from USERS;
+select * from P_ADMIN;
+
+
+insert into P_ADMIN values (&quot;admin&quot;,&quot;admin&quot;);</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

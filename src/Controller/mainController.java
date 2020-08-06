@@ -34,12 +34,15 @@ public class mainController {
         loginBtn.setDisable(disableButton);
     }
     public void loginAction(ActionEvent event) {
-        String login=(user.isSelected()?"user.fxml":"admin.fxml");
-        System.out.println(login);
-
-        System.out.println(username.getText());
-        System.out.println(password.getText());
+        String login = null;
+        //String login=(user.isSelected()?"user.fxml":"admin.fxml");
+        controller.login login1 =new login(username.getText(),password.getText());
+        login= (user.isSelected()?login1.validateUser():login1.validateAdmin());
         changeLoginScreen(event,login);
+       System.out.println(login);
+       System.out.println(username.getText());
+       System.out.println(password.getText());
+
     }
 
 
@@ -53,7 +56,7 @@ public class mainController {
             stage.setScene(scene);
 
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println(e+"this");
         }
 
 

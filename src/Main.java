@@ -11,13 +11,13 @@ public class Main extends Application {
         //MAIN
 //        Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
         //Admin
-//        Parent root = FXMLLoader.load(getClass().getResource("/view/admin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/admin.fxml"));
         //test
 //        Parent root = FXMLLoader.load(getClass().getResource("/test/test.fxml"));
         //Add Employee
-        Parent root = FXMLLoader.load(getClass().getResource("/view/addNew/empAdd.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/view/addNew/empAdd.fxml"));
         primaryStage.setTitle("Pharmacy ");
-        primaryStage.setScene(new Scene(root ,800,600));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 

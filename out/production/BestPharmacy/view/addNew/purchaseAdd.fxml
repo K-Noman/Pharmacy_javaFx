@@ -10,15 +10,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.purchaseController">
+<VBox prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.purchaseController">
    <children>
-      <SplitPane dividerPositions="0.245" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <SplitPane dividerPositions="0.22" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <items>
             <AnchorPane>
                <children>
                   <VBox layoutX="14.0" layoutY="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="All Purchase" textAlignment="CENTER" wrapText="false">
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Add Purchase" textAlignment="CENTER" wrapText="false">
                            <font>
                               <Font size="18.0" fx:id="x1" />
                            </font>
@@ -26,64 +26,110 @@
                               <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
                            </textFill>
                            <VBox.margin>
-                              <Insets left="10.0" top="15.0" />
+                              <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
                         </Label>
-                        <JFXTextField fx:id="empID" layoutX="14.0" layoutY="83.0" promptText="Employee ID" VBox.vgrow="ALWAYS">
+                        <JFXTextField fx:id="productID" layoutX="14.0" layoutY="83.0" promptText="Product ID" VBox.vgrow="ALWAYS">
                            <padding>
-                              <Insets bottom="7.0" top="5.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <VBox.margin>
-                              <Insets left="10.0" right="10.0" top="70.0" />
+                              <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="empName" layoutX="14.0" layoutY="117.0" promptText="Employee Name" VBox.vgrow="ALWAYS">
+                        <JFXTextField fx:id="productName" layoutX="14.0" layoutY="117.0" promptText="Product Name" VBox.vgrow="ALWAYS">
                            <padding>
-                              <Insets bottom="7.0" top="5.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <VBox.margin>
-                              <Insets left="10.0" right="10.0" top="30.0" />
+                              <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="empLastName" promptText="Last Name" VBox.vgrow="ALWAYS">
+                        <JFXTextField fx:id="productDose" promptText="Dose" VBox.vgrow="ALWAYS">
                            <padding>
-                              <Insets bottom="7.0" top="5.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <VBox.margin>
-                              <Insets left="10.0" right="10.0" top="30.0" />
+                              <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="empMobile" promptText="Mobile" VBox.vgrow="ALWAYS">
+                        <JFXTextField fx:id="productCostPrice" promptText="Cost Price" VBox.vgrow="ALWAYS">
                            <padding>
-                              <Insets bottom="7.0" top="5.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <VBox.margin>
-                              <Insets left="10.0" right="10.0" top="30.0" />
+                              <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="empEmail" promptText="Email" VBox.vgrow="ALWAYS">
+                        <JFXTextField fx:id="productSellingPrice" promptText="Selling Price" VBox.vgrow="ALWAYS">
                            <padding>
-                              <Insets bottom="7.0" top="5.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <VBox.margin>
-                              <Insets left="10.0" right="10.0" top="30.0" />
+                              <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="empPassword" promptText="Password" VBox.vgrow="ALWAYS">
+                        <DatePicker fx:id="productExpiryDate" promptText="Expiry Date">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
                            <padding>
-                              <Insets bottom="7.0" top="5.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </DatePicker>
+                        <DatePicker fx:id="productProductionDate" promptText="Production Date">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </DatePicker>
+                        <JFXTextField fx:id="productPlace" promptText="Place To Hold">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXTextField fx:id="productCompany" promptText="Company" VBox.vgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <VBox.margin>
-                              <Insets left="10.0" right="10.0" top="30.0" />
+                              <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXButton blendMode="DARKEN" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="7.0" layoutX="69.0" layoutY="207.0" onAction="#savePurchase" prefHeight="39.0" prefWidth="179.0" text="Add Purchase" VBox.vgrow="ALWAYS">
+                        <JFXTextField fx:id="productPack" promptText="Number of pack">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXTextField fx:id="productQuantity" promptText="Quantity per pack">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXButton fx:id="addPurchase" blendMode="DARKEN" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="7.0" layoutX="69.0" layoutY="207.0" onAction="#savePurchase" prefHeight="39.0" prefWidth="179.0" text="Add Purchase" VBox.vgrow="ALWAYS">
                            <font>
                               <Font size="18.0" />
                            </font>
                            <VBox.margin>
-                              <Insets left="30.0" top="50.0" />
+                              <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
                         </JFXButton>
                      </children>
                   </VBox>
@@ -91,14 +137,18 @@
             </AnchorPane>
             <AnchorPane>
                <children>
-                  <TableView fx:id="employeeView" layoutX="47.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="productView" layoutX="47.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
-                        <TableColumn fx:id="empIDColumn" prefWidth="75.0" text="Employee ID" />
-                        <TableColumn fx:id="empNameColumn" minWidth="17.0" prefWidth="101.0" text="FirstName" />
-                        <TableColumn fx:id="empLastNameColumn" minWidth="17.0" prefWidth="101.0" text="LastName" />
-                        <TableColumn fx:id="empMobileColumn" minWidth="17.0" prefWidth="101.0" text="Mobile" />
-                        <TableColumn fx:id="empEmailColumn" minWidth="17.0" prefWidth="101.0" text="Email" />
-                        <TableColumn fx:id="empPasswordColumn" minWidth="17.0" prefWidth="101.0" text="Password" />
+                        <TableColumn fx:id="productIDColumn" maxWidth="90.0" prefWidth="90.0" text="Product ID" />
+                        <TableColumn fx:id="productNameColumn" maxWidth="100.0" prefWidth="90.0" text="Product Name" />
+                        <TableColumn fx:id="productDoseColumn" maxWidth="90.0" text="Dose" />
+                        <TableColumn fx:id="productCostPriceColumn" maxWidth="100.0" prefWidth="91.0" text="Cost Price" />
+                        <TableColumn fx:id="productSellingPriceColumn" maxWidth="100.0" minWidth="17.0" prefWidth="89.0" text="Selling Price" />
+                        <TableColumn fx:id="productExpiryDateColumn" minWidth="17.0" prefWidth="90.0" text="Expiry Date" />
+                        <TableColumn fx:id="productProductionDateColumn" minWidth="0.0" prefWidth="78.0" text="Production Date" />
+                        <TableColumn fx:id="productPlaceColumn" minWidth="17.0" prefWidth="110.0" text="Place To Hold" />
+                        <TableColumn fx:id="productCompanyColumn" minWidth="17.0" prefWidth="101.0" text="Company" />
+                        <TableColumn fx:id="productStockColumn" minWidth="17.0" prefWidth="101.0" text="Stock" />
                      </columns>
                   </TableView>
                </children>
