@@ -131,7 +131,6 @@ public class employeeTable {
                 employeeRec.setEmail(result.getString(5));
                 employeeRec.setPassword(result.getString(6));
                 employee.add(employeeRec);
-
             }
             return employee;
         }catch (Exception e){

@@ -3,20 +3,18 @@ package test;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sun.plugin2.message.ShowStatusMessage;
 
 import javax.management.Notification;
+import java.time.LocalDate;
 import java.util.List;
 
 public class testController {
 
 
-
+    public DatePicker datePicker;
     @FXML
     private JFXTextField phone;
     @FXML
@@ -48,14 +46,19 @@ public class testController {
 
 
     public  void saveTestButton(ActionEvent event) {
-        System.out.println(name.getText());
-        System.out.println(testID.getText());
-        testTable testtable =new testTable(name.getText(),testID.getText(),phone.getText());
-        testtable.save();
-        System.out.println(testtable.getAll());
-        System.out.println(testtable.getAll().size());
+//        System.out.println(name.getText());
+//        System.out.println(testID.getText());
+//        testTable testtable =new testTable(name.getText(),testID.getText(),phone.getText());
+//        testtable.save();
+//        System.out.println(testtable.getAll());
+//        System.out.println(testtable.getAll().size());
 
 
+        System.out.println(datePicker.getValue());
+        String date=datePicker.getValue().toString();
+        System.out.println(date);
+
+        System.out.println(datePicker.getDayCellFactory());
 
 
 

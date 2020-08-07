@@ -11,6 +11,7 @@ public class Main extends Application {
         //MAIN
 //        Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
         //Admin
+//
         Parent root = FXMLLoader.load(getClass().getResource("/view/admin.fxml"));
         //test
 //        Parent root = FXMLLoader.load(getClass().getResource("/test/test.fxml"));

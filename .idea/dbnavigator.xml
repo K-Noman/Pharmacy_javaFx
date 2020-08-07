@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
-    <record-view-column-sorting-type value="BY_INDEX" />
+    <record-view-column-sorting-type value="ALPHABETICAL" />
     <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
@@ -23,17 +23,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
-        <schema name="PUBLIC" object-types="materialized view, package, function, sequence, type, view, table, synonym" />
-        <schema name="SYS" object-types="type" />
-        <schema name="SYSTEM" object-types="materialized view, package, function, sequence, type, view, table, synonym, column" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
-      <console name="Pharmacy" type="STANDARD" schema="SYSTEM" session="Main">select * from SALES;
+      <console name="Pharmacy" type="STANDARD" schema="SYSTEM" session="Main"><![CDATA[select * from SALES;
 select * from DRUGS;
 select * from EMP;
 select * from COMPANY;
@@ -42,7 +36,7 @@ select * from USERS;
 select * from P_ADMIN;
 
 
-insert into P_ADMIN values (&quot;admin&quot;,&quot;admin&quot;);</console>
+insert into P_ADMIN values ("admin","admin");]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

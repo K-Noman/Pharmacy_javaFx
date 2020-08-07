@@ -1,16 +1,20 @@
 package classes;
-
-import controller.login;
+import controller.addNew.addEmployee;
+import controller.table.purchaseTable;
 
 import java.sql.SQLException;
-import java.sql.SQLOutput;
+
 
 public class test {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-//        login login=new login("noman","12345");
-//        System.out.println(login.validateUser());
-        login login1=new login("admin","admin");
-        System.out.println(login1.validateAdmin());
+
+//        purchaseTable purchase =new purchaseTable("1231","Aspirin","120mg","5","10","21-feb-99","20-feb-99","r-up","VEA","10","10");
+        purchaseTable purchaseTable=new purchaseTable();
+//        purchase.addPurchase();
+        System.out.println(purchaseTable.getAll());
+        addEmployee addEmployee=new addEmployee();
+        addEmployee.renderTable();
+
 
 
     }

@@ -1,112 +1,96 @@
 package controller.addNew;
 
+import com.jfoenix.controls.JFXTextField;
+import controller.table.employeeTable;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 import java.sql.*;
+import java.util.List;
 
 public class addEmployee {
-    private String id;
-    private String firstName;
-    private String lastName;
-    private String mobile;
-    private String email;
-    private String password;
-    public addEmployee(String firstName, String lastName, String mobile, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.mobile = mobile;
-        this.email = email;
-        this.password = password;
+    @FXML
+    private JFXTextField empID;
+    @FXML
+    private JFXTextField empName;
+    @FXML
+    private JFXTextField empLastName;
+    @FXML
+    private JFXTextField empMobile;
+    @FXML
+    private JFXTextField empPassword;
+    @FXML
+    private TableView employeeView;
+    @FXML
+    private TableColumn<employeeTable, String> empIDColumn;
+    @FXML
+    private TableColumn<employeeTable, String> empNameColumn;
+    @FXML
+    private TableColumn<employeeTable, String> empLastNameColumn;
+    @FXML
+    private TableColumn<employeeTable, String> empMobileColumn;
+    @FXML
+    private TableColumn<employeeTable, String> empEmailColumn;
+    @FXML
+    private TableColumn<employeeTable, String> empPasswordColumn;
+    @FXML
+    private JFXTextField empEmail;
+
+    public void initialize() {
+
+        renderTable();
     }
 
-    public addEmployee(String id, String firstName, String lastName, String mobile, String email, String password) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.mobile = mobile;
-        this.email = email;
-        this.password = password;
+    public void saveEmployee(ActionEvent event) throws SQLException, ClassNotFoundException {
+        String EMPID = this.empID.getText();
+        String firstname = this.empName.getText();
+        String LASTNAME = this.empLastName.getText();
+        String MOBILE = this.empMobile.getText();
+        String EMAIL = this.empEmail.getText();
+        String PASSWORD = this.empPassword.getText();
+
+        System.out.println(EMPID);
+        System.out.println(firstname);
+        System.out.println(LASTNAME);
+        System.out.println(MOBILE);
+        System.out.println(EMAIL);
+        System.out.println(PASSWORD);
+        employeeTable employeeTable = new employeeTable(EMPID, firstname, LASTNAME, MOBILE, EMAIL, PASSWORD);
+        employeeTable.saveEmployee();
+        employeeView.getItems().clear();
+        clearView();
+        renderTable();
+        System.out.println(employeeTable.getAll());
+
+
     }
 
-    @Override
-    public String toString() {
-        return "addEmployee{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public  void renderTable() {
+        List<employeeTable> employee = employeeTable.getAll();
+        this.empIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.empNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        this.empLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        this.empMobileColumn.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+        this.empEmailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        this.empPasswordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
+        employeeView.getItems().addAll(employee);
+        System.out.println(employeeView);
+        System.out.println(employee);
+
     }
 
-    public String getId() {
-        return id;
-    }
+    private void clearView() {
+        empID.clear();
+        empName.clear();
+        empLastName.clear();
+        empMobile.clear();
+        empEmail.clear();
+        empPassword.clear();
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public addEmployee save() {
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/orcl", "system", "Oracle_1");
-
-            PreparedStatement stmt = con.prepareStatement("insert into Emp values(?,? ,?,?,?,?)");
-            stmt.setString(1, this.id);
-            stmt.setString(2, this.firstName);
-            stmt.setString(3, this.lastName);
-            stmt.setString(4, this.mobile);
-            stmt.setString(5, this.mobile);
-            stmt.setString(6, this.password);
-
-            int i = stmt.executeUpdate();
-            System.out.println(i + " records inserted in employee table ");
-            con.close();
-            return this;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return this;
     }
 
 }
