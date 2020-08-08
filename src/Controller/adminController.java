@@ -86,4 +86,7 @@ public class adminController {
     public void newPurchase(ActionEvent event) {
         changeScene(event,"addNew/purchaseAdd");
     }
+    public void newCompany(ActionEvent event) {
+        changeScene(event,"addNew/companyAdd");
+    }
 }

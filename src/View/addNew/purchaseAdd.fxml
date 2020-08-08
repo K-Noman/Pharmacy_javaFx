@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-
 <VBox prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addNew.addPurchase">
    <children>
       <SplitPane dividerPositions="0.22" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
@@ -41,14 +37,6 @@
                            </VBox.margin>
                         </JFXTextField>
                         <JFXTextField fx:id="productName" layoutX="14.0" layoutY="117.0" promptText="Product Name" VBox.vgrow="ALWAYS">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets left="10.0" right="10.0" top="10.0" />
-                           </VBox.margin>
-                        </JFXTextField>
-                        <JFXTextField fx:id="productDose" promptText="Dose" VBox.vgrow="ALWAYS">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
@@ -96,7 +84,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </JFXTextField>
-                        <JFXTextField fx:id="productCompany" promptText="Company" VBox.vgrow="ALWAYS">
+                        <JFXTextField fx:id="productCompany" promptText="Company ID" VBox.vgrow="ALWAYS">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
@@ -141,13 +129,13 @@
                      <columns>
                         <TableColumn fx:id="productIDColumn" text="Product ID" />
                         <TableColumn fx:id="productNameColumn" prefWidth="90.0" text="Product Name" />
-                        <TableColumn fx:id="productDoseColumn" minWidth="15.0" prefWidth="70.0" text="Dose" />
+<!--                        <TableColumn fx:id="productDoseColumn" minWidth="15.0" prefWidth="70.0" text="Dose" />-->
                         <TableColumn fx:id="productCostPriceColumn" text="Cost Price" />
                         <TableColumn fx:id="productSellingPriceColumn" minWidth="17.0" text="Selling Price" />
                         <TableColumn fx:id="productExpiryDateColumn" minWidth="17.0" text="Expiry Date" />
                         <TableColumn fx:id="productProductionDateColumn" minWidth="100.0" text="Production Date" />
                         <TableColumn fx:id="productPlaceColumn" minWidth="17.0" text="Place To Hold" />
-                        <TableColumn fx:id="productCompanyColumn" minWidth="17.0" text="Company" />
+                        <TableColumn fx:id="productCompanyColumn" minWidth="17.0" text="Company ID" />
                         <TableColumn fx:id="productPackColumn" minWidth="17.0" text="No_Of_Pack" />
                         <TableColumn fx:id="productQin_One_packColumn" minWidth="17.0" text="Qin_One_pack" />
                         <TableColumn fx:id="productStockColumn" minWidth="17.0" text="Stock" />

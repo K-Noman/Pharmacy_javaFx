@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.stockController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addNew.addCompany">
    <children>
       <SplitPane dividerPositions="0.245" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <items>
@@ -18,7 +18,7 @@
                <children>
                   <VBox layoutX="14.0" layoutY="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="All Stock" textAlignment="CENTER" wrapText="false">
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="All Companies" textAlignment="CENTER" wrapText="false">
                            <font>
                               <Font size="18.0" fx:id="x1" />
                            </font>
@@ -29,7 +29,7 @@
                               <Insets bottom="100.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <JFXTextField fx:id="productID" labelFloat="true" promptText="Product ID">
+                        <JFXTextField fx:id="CompanyID" labelFloat="true" promptText="Company ID">
                            <padding>
                               <Insets bottom="7.0" top="5.0" />
                            </padding>
@@ -37,7 +37,7 @@
                               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="productName" labelFloat="true" promptText="Product Name">
+                        <JFXTextField fx:id="CompanyName" labelFloat="true" promptText="Company Name">
                            <padding>
                               <Insets bottom="7.0" top="5.0" />
                            </padding>
@@ -45,7 +45,23 @@
                               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXButton fx:id="productStock" blendMode="DARKEN" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="7.0" layoutX="69.0" layoutY="207.0" onAction="#searchStockAction" prefHeight="39.0" prefWidth="148.0" text="Search" VBox.vgrow="ALWAYS">
+                        <JFXTextField fx:id="CompanyAddress" labelFloat="true" layoutX="14.0" layoutY="83.0" promptText="Company Address" VBox.vgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="7.0" top="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="CompanyPhone" labelFloat="true" promptText="Company Phone">
+                           <padding>
+                              <Insets bottom="7.0" top="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXButton fx:id="addCompany" blendMode="DARKEN" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="7.0" layoutX="69.0" layoutY="207.0" onAction="#addCompanyAction" prefHeight="39.0" prefWidth="148.0" text="Add Company" VBox.vgrow="ALWAYS">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -59,16 +75,15 @@
             </AnchorPane>
             <AnchorPane>
                <children>
-                  <TableView fx:id="stockTableView" layoutX="47.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="companyTableView" layoutX="47.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                      <columns>
-                        <TableColumn fx:id="stockIDColumn" prefWidth="75.0" text="Product ID" />
-                        <TableColumn fx:id="stockNameColumn" minWidth="17.0" prefWidth="101.0" text="Product Name" />
-                        <TableColumn fx:id="stockSellingPriceColumn" minWidth="17.0" prefWidth="101.0" text="Selling Price " />
-                        <TableColumn fx:id="stockCompanyIDColumn" minWidth="17.0" prefWidth="101.0" text="Company ID" />
-                        <TableColumn fx:id="stockStockColumn" minWidth="17.0" prefWidth="101.0" text="Stock" />
+                        <TableColumn fx:id="companyIDColumn" prefWidth="75.0" text="Company ID" />
+                        <TableColumn fx:id="companyNameColumn" minWidth="17.0" prefWidth="101.0" text="Company Name" />
+                        <TableColumn fx:id="companyAddressColumn" minWidth="17.0" prefWidth="101.0" text="Company Address" />
+                        <TableColumn fx:id="companyPhoneColumn" minWidth="17.0" prefWidth="101.0" text="Company Phone" />
                      </columns>
                   </TableView>
                </children>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.validation.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.269" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <JFXTextField labelFloat="true" layoutX="41.0" layoutY="168.0" prefHeight="30.0" prefWidth="184.0" promptText="Customer Name" AnchorPane.topAnchor="168.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <DatePicker layoutX="36.0" layoutY="111.0" prefHeight="25.0" prefWidth="184.0" promptText="Sales Date" AnchorPane.bottomAnchor="462.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="111.0" />
+            <JFXTextField labelFloat="true" layoutX="41.0" layoutY="222.0" prefHeight="30.0" prefWidth="184.0" promptText="Product" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="225.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField labelFloat="true" layoutX="41.0" layoutY="269.0" prefHeight="30.0" prefWidth="184.0" promptText="Quantity" AnchorPane.topAnchor="283.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <SplitPane dividerPositions="0.6225" layoutX="8.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <TableView layoutY="168.0" prefHeight="211.0" prefWidth="695.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Product ID" />
+                            <TableColumn prefWidth="120.0" text="Product Name" />
+                              <TableColumn text="Dose" />
+                              <TableColumn text="Cost Price" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

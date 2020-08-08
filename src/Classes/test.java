@@ -1,23 +1,44 @@
 package classes;
-import controller.addNew.addEmployee;
-import controller.table.purchaseTable;
+import controller.table.salesTable;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
+import static javafx.application.Application.launch;
 
-public class test {
+
+public class test  {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        salesTable salesTable =new salesTable("123","20mg","1","10","10","aspirine");
 
-//        purchaseTable purchase =new purchaseTable("1231","Aspirin","120mg","5","10","21-feb-99","20-feb-99","r-up","VEA","10","10");
-        purchaseTable purchaseTable=new purchaseTable();
-//        purchase.addPurchase();
-        System.out.println(purchaseTable.getAll());
-        addEmployee addEmployee=new addEmployee();
-        addEmployee.renderTable();
+        System.out.println(salesTable.getAll());
 
 
 
     }
+
+
+//
+//    @Override
+//    public void start(Stage primaryStage) throws Exception{
+//        //MAIN
+////        Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
+//        //Admin
+////        Parent root = FXMLLoader.load(getClass().getResource("/view/admin.fxml"));
+//        //test
+////        Parent root = FXMLLoader.load(getClass().getResource("/test/test.fxml"));
+//        //Add Employee
+////        Parent root = FXMLLoader.load(getClass().getResource("/view/addNew/empAdd.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/view/salesTab.fxml"));
+//        primaryStage.setTitle("Pharmacy ");
+//        primaryStage.setScene(new Scene(root));
+//        primaryStage.show();
+
+
 
 
 

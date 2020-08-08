@@ -23,7 +23,13 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
+        <schema name="PUBLIC" object-types="table, synonym, package, function, type, materialized view, sequence, view" />
+        <schema name="SYS" object-types="type" />
+        <schema name="SYSTEM" object-types="table, synonym, package, function, type, materialized view, sequence, column, view" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
@@ -34,6 +40,8 @@ select * from COMPANY;
 select * from PURCHASE;
 select * from USERS;
 select * from P_ADMIN;
+select * from Stock;
+
 
 
 insert into P_ADMIN values ("admin","admin");]]></console>
