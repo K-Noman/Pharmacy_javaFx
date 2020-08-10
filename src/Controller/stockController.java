@@ -35,18 +35,15 @@ public class stockController {
     }
 
 
-    public void renderStockTable(){
-        List<stockTable> sales=stockTable.getAll();
+    public  void renderStockTable(){
+        List<stockTable> stock=stockTable.getAll();
         this.stockIDColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_ID"));
         this.stockNameColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_Name"));
         this.stockSellingPriceColumn.setCellValueFactory(new PropertyValueFactory<>("Selling_Price"));
         this.stockCompanyIDColumn.setCellValueFactory(new PropertyValueFactory<>("Company_ID"));
         this.stockStockColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
-        stockTableView.getItems().addAll(sales);
-
-
-
-
-
+        stockTableView.getItems().addAll(stock);
     }
+
+
 }

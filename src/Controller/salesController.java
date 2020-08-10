@@ -48,7 +48,8 @@ public class salesController {
 
 
     }
-   private void renderSalesTable(){
+
+   private    void renderSalesTable(){
        List<salesTable> sales=salesTable.getAll();
        System.out.println(salesTable.getAll());
        System.out.println(sales+" bjh");
@@ -60,11 +61,8 @@ public class salesController {
        this.priceColumn.setCellValueFactory(new PropertyValueFactory<>("PRICE"));
        this.AmountColumn.setCellValueFactory(new PropertyValueFactory<>("AMMONT"));
        salesTableView.getItems().addAll(sales);
+    }
 
-
-
-
-   }
 
 
 }

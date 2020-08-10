@@ -2,6 +2,7 @@ package controller.addNew;
 
 import com.jfoenix.controls.JFXTextField;
 import controller.table.employeeTable;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -89,9 +90,8 @@ public class addEmployee {
         empMobile.clear();
         empEmail.clear();
         empPassword.clear();
-
-
     }
+
 
 }
 

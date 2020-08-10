@@ -13,8 +13,8 @@ public class userController {
     public void initialize() {
                 try {
 
-                        Parent studentTab= FXMLLoader.load(getClass().getResource("/view/salesTab.fxml"));
-                        userSalesTab.setContent(studentTab);
+                        Parent salesTab= FXMLLoader.load(getClass().getResource("/view/user/userSalesTab.fxml"));
+                        userSalesTab.setContent(salesTab);
                 }catch (Exception e){
                     System.out.println("student tab not loaded  ");
                         }

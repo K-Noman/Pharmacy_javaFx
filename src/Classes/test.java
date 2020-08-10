@@ -1,14 +1,8 @@
 package classes;
+
 import controller.table.salesTable;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 import java.sql.SQLException;
-
-import static javafx.application.Application.launch;
 
 
 public class test  {
