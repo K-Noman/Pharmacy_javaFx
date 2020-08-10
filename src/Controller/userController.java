@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,16 +8,30 @@ public class userController {
 
 
     public Tab userSalesTab;
+    public Tab userPurchaseTab;
 
 
     public void initialize() {
-                try {
+        showSalesTab();
+        showPurchaseTab();
 
-                        Parent salesTab= FXMLLoader.load(getClass().getResource("/view/user/userSalesTab.fxml"));
-                        userSalesTab.setContent(salesTab);
-                }catch (Exception e){
-                    System.out.println("student tab not loaded  ");
-                        }
 
+    }
+
+    private void showSalesTab(){
+        try {
+            Parent salesTab= FXMLLoader.load(getClass().getResource("/view/user/userSalesTab.fxml"));
+            userSalesTab.setContent(salesTab);
+        }catch (Exception e){
+            System.out.println("user Sales tab not loaded  ");
+        }
+    }
+    private void showPurchaseTab(){
+        try {
+            Parent purchaseTab= FXMLLoader.load(getClass().getResource("/view/addNew/purchaseAdd.fxml"));
+            userPurchaseTab.setContent(purchaseTab);
+        }catch (Exception e){
+            System.out.println("user Purchase  tab not loaded  ");
+        }
     }
 }

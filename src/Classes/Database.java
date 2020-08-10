@@ -1,15 +1,15 @@
-package classes;
+package Classes;
 
 import java.sql.*;
 
-public class database {
+public class Database {
     private static final String Database_url = "jdbc:oracle:thin:@localhost:1521/orcl";
     private static final String Database_Username = "system";
     private static final String Database_Password = "Oracle_1";
     private static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
     private static Connection conn = null;
 
-    public database() {
+    public Database() {
     }
 
     public static void dbConnect() throws SQLException, ClassNotFoundException {
