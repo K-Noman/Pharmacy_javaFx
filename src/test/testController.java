@@ -1,82 +1,93 @@
 package test;
 
-
 import com.jfoenix.controls.JFXTextField;
-import controller.addNew.addEmployee;
-import controller.table.employeeTable;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import search.users;
 
 import java.util.List;
 
 public class testController {
 
 
+    public JFXTextField filterField;
     @FXML
-    private JFXTextField search;
+    private TableView userSalesTable;
     @FXML
-    private TableView employeeView;
+    private TableColumn<controller.table.salesTable,String> productIDColumn;
     @FXML
-    private TableColumn<employeeTable, String> empIDColumn;
+    private TableColumn<controller.table.salesTable,String> productNameColumn;
     @FXML
-    private TableColumn<employeeTable, String> empNameColumn;
+    private TableColumn<controller.table.salesTable,String> productQuantityColumn;
     @FXML
-    private TableColumn<employeeTable, String> empLastNameColumn;
+    private TableColumn<controller.table.salesTable,String> productPriceColumn;
     @FXML
-    private TableColumn<employeeTable, String> empMobileColumn;
-    @FXML
-    private TableColumn<employeeTable, String> empEmailColumn;
-    @FXML
-    private TableColumn<employeeTable, String> empPasswordColumn;
+    private TableColumn<controller.table.salesTable,String> productBillColumn;
 
-
-
-
-    addEmployee employee=new addEmployee();
-
-    public void initialize() {
-        renderTable();
+    public void initialize(){
+        renderSalesTable();
 
     }
 
 
+    public void SearchTextAction(KeyEvent event) {
+        System.out.println(dbDataBase.getDataSales() + "kjb k");
+        ObservableList<sales> dataList;
+        System.out.println(dbDataBase.getDataSales());
+        this.productIDColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_ID"));
+        this.productNameColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_NAME"));
+        this.productQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("QUANTITY"));
+        this.productPriceColumn.setCellValueFactory(new PropertyValueFactory<>("PRICE"));
+        this.productBillColumn.setCellValueFactory(new PropertyValueFactory<>("AMMONT"));
+        dataList = dbDataBase.getDataSales();
+        userSalesTable.setItems(dataList);
+        FilteredList<sales> filteredData = new FilteredList<>(dataList, b -> true);
 
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(person -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
 
-    private void renderTable(){
-        List<employeeTable> employee = employeeTable.getAll();
-        this.empIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        this.empNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        this.empLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        this.empMobileColumn.setCellValueFactory(new PropertyValueFactory<>("mobile"));
-        this.empEmailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-        this.empPasswordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
-        employeeView.getItems().addAll(employee);
+                if (person.getPRODUCT_NAME().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches username
+                } else if (person.getPRODUCT_NAME().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches password
+                } else if (person.getPRICE().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches password
+                } else if (String.valueOf(person.getAMMONT()).indexOf(lowerCaseFilter) != -1)
+                    return true;// Filter matches email
+
+                else
+                    return false; // Does not match.
+            });
+        });
+        SortedList<sales> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(userSalesTable.comparatorProperty());
+        userSalesTable.setItems(sortedData);
+    }
+
+    public void renderSalesTable(){
+        List<testTable> sales= testTable.getAll();
+        this.productIDColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_ID"));
+        this.productNameColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_NAME"));
+        this.productQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("QUANTITY"));
+        this.productPriceColumn.setCellValueFactory(new PropertyValueFactory<>("PRICE"));
+        this.productBillColumn.setCellValueFactory(new PropertyValueFactory<>("AMMONT"));
+        userSalesTable.getItems().addAll(sales);
     }
 
 
-
-
-
-    public void keyPressed(KeyEvent keyEvent) {
-
-
-
-
-    }
-
-    public void keyReleased(KeyEvent keyEvent) {
-
-    }
-
-    public void searchButton(ActionEvent event) {
-//        FilteredList<employeeTable> filteredData = new FilteredList<>(data, p -> true);
-        testTable.renderTestTable();
-
-
+    public void SearchBUttonAction(ActionEvent event) {
 
     }
 }
