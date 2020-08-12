@@ -18,10 +18,6 @@ purchaseTable {
 
 
      private String  productID;
-
-
-
-
      private String  productName;
      private String  productCostPrice;
      private String  productSellingPrice;

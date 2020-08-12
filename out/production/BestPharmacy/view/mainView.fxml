@@ -1,37 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.mainController"
-            prefHeight="400.0" prefWidth="600.0">
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="blue-panel" stylesheets="@../CSS/newCascadeStyleSheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mainController">
 
     <children>
-        <Label layoutX="150.0" layoutY="8.0" text="Pharmacy Management" textFill="#6473d3">
+        <Label layoutX="150.0" layoutY="8.0" stylesheets="@../CSS/newCascadeStyleSheet.css" text="Pharmacy Management" textFill="#2c1772">
             <font>
                 <Font name="Gabriola" size="41.0" />
             </font>
         </Label>
-        <Label layoutX="100.0" layoutY="116.0" text="Username">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
-        <Label layoutX="100.0" layoutY="180.0" text="Password">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
-        <TextField fx:id="username" layoutX="226.0" layoutY="114.0" onKeyReleased="#loginBtnEnabler" promptText="Username" />
-        <PasswordField fx:id="password" layoutX="226.0" layoutY="178.0" />
-        <RadioButton fx:id="user" layoutX="193.0" layoutY="235.0" mnemonicParsing="false" selected="true" text="User">
+        <RadioButton fx:id="user" layoutX="193.0" layoutY="235.0" mnemonicParsing="false" selected="true" styleClass="radiogroup" stylesheets="@../CSS/newCascadeStyleSheet.css" text="User">
             <font>
                 <Font size="14.0" />
             </font>
@@ -42,16 +31,28 @@
                 <ToggleGroup fx:id="userAdmin" />
             </toggleGroup>
         </RadioButton>
-        <RadioButton fx:id="admin" layoutX="193.0" layoutY="255.0" mnemonicParsing="false" text="Admin" toggleGroup="$userAdmin">
+        <RadioButton fx:id="admin" layoutX="193.0" layoutY="255.0" mnemonicParsing="false" styleClass="radiogroup" stylesheets="@../CSS/newCascadeStyleSheet.css" text="Admin" toggleGroup="$userAdmin">
             <font>
                 <Font size="14.0" />
             </font>
         </RadioButton>
-        <Button fx:id="loginBtn" layoutX="306.0" layoutY="235.0" mnemonicParsing="false" onAction="#loginAction" text="Login">
+        <Button fx:id="loginBtn" layoutX="306.0" layoutY="235.0" mnemonicParsing="false" onAction="#loginAction" styleClass="blue-btn" stylesheets="@../CSS/newCascadeStyleSheet.css" text="Login">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
+      <JFXTextField fx:id="username" focusColor="#2c1772" labelFloat="true" layoutX="193.0" layoutY="114.0" onKeyReleased="#loginBtnEnabler" prefHeight="30.0" prefWidth="180.0" promptText="Name" unFocusColor="#a7e4f4">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXPasswordField fx:id="password" focusColor="#2c1772" labelFloat="true" layoutX="193.0" layoutY="178.0" onKeyReleased="#iconPasswordEnabler" prefHeight="30.0" prefWidth="180.0" promptText="Password" unFocusColor="#a7e4f4">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXPasswordField>
+      <FontAwesomeIcon fx:id="iconUser" glyphName="USER" layoutX="358.0" layoutY="135.0" size="1.5em" />
+      <FontAwesomeIcon fx:id="iconPassword" glyphName="LOCK" layoutX="359.0" layoutY="199.0" size="1.5em" />
     </children>
 
 </AnchorPane>

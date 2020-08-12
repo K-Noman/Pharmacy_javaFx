@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -8,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminController">
+<BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminController">
    <top>
       <HBox prefHeight="16.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -39,9 +41,6 @@
          </children>
       </HBox>
    </top>
-   <center>
-      <Label fx:id="label" text="Label" BorderPane.alignment="CENTER" />
-   </center>
    <left>
       <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
    </left>
@@ -51,4 +50,143 @@
    <right>
       <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
    </right>
+   <center>
+      <Pane prefHeight="562.0" prefWidth="832.0">
+         <children>
+            <Label fx:id="label" opacity="0.0" text="Label" />
+            <Separator layoutX="6.0" layoutY="8.0" prefHeight="12.0" prefWidth="811.0" />
+            <GridPane hgap="20.0" layoutY="35.0" prefHeight="161.0" prefWidth="822.0">
+               <children>
+                  <JFXButton fx:id="AddEmployee" alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#AddEmployeeAction" onMouseEntered="#cons_bt_mi" onMouseExited="#cons_bt_mo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00A0A8; -fx-background-radius: 35 5 5 5;" text="Add Employee" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" size="6em" textAlignment="CENTER" translateY="-20.0" wrappingWidth="172.0" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="AddPurchase" alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#AddPurchaseAction" onMouseEntered="#hist_bt_mi" onMouseExited="#hist_bt_mo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d0508c; -fx-background-radius: 35 5 5 5;" text="Add Purchase" textFill="WHITE" GridPane.columnIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="AddCompany" alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#AddCompanyAction" onMouseEntered="#bill_bt_mi" onMouseExited="#bill_bt_mo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5D7373; -fx-background-radius: 35 5 5 5;" text="Add Company" textFill="WHITE" GridPane.columnIndex="2">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="FILE" glyphStyle=" " size="6em" textAlignment="CENTER" translateY="-20.0" wrappingWidth="155.0" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="tax_bt" alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#tax_bt_ac" onMouseEntered="#tax_bt_mi" onMouseExited="#tax_bt_mo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0da868; -fx-background-radius: 35 5 5 5;" text="Taxes" textFill="WHITE" GridPane.columnIndex="3">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="EYE" size="6em" textAlignment="CENTER" translateY="-20.0" wrappingWidth="172.0" />
+                     </graphic>
+                  </JFXButton>
+                  <FontAwesomeIcon fill="WHITE" glyphName="BOOK" glyphStyle=" " size="8em" textAlignment="CENTER" wrappingWidth="100.0" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="40.0" />
+                     </GridPane.margin>
+                  </FontAwesomeIcon>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Label fx:id="main_heading" alignment="CENTER" layoutY="-3.0" prefHeight="11.0" prefWidth="43.0" style="-fx-background-color: lightblue; -fx-background-radius: 20 20 0 0;" text="Add" textFill="#5d7373">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <GridPane hgap="20.0" layoutY="248.0" prefHeight="161.0" prefWidth="822.0">
+               <children>
+                  <JFXButton fx:id="ViewEmployee" alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#ViewEmployeeAction" onMouseEntered="#cons_bt_mi" onMouseExited="#cons_bt_mo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00A0A8; -fx-background-radius: 35 5 5 5;" text="View Employee" textFill="WHITE" GridPane.rowIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" size="6em" textAlignment="CENTER" translateY="-20.0" wrappingWidth="172.0" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="ViewPurchase" alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#ViewPurchaseAction" onMouseEntered="#hist_bt_mi" onMouseExited="#hist_bt_mo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d0508c; -fx-background-radius: 35 5 5 5;" text="View Sales" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="EYE" size="6em" textAlignment="CENTER" translateY="-20.0" wrappingWidth="172.0" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="ViewSales" alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#ViewSalesAction" onMouseEntered="#bill_bt_mi" onMouseExited="#bill_bt_mo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5D7373; -fx-background-radius: 35 5 5 5;" text="View Stock" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="EYE" size="6em" textAlignment="CENTER" translateY="-20.0" wrappingWidth="155.0" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="tax_bt1" alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#tax_bt_ac" onMouseEntered="#tax_bt_mi" onMouseExited="#tax_bt_mo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0da868; -fx-background-radius: 35 5 5 5;" text="Taxes" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="TRASH_ALT" size="6em" textAlignment="CENTER" translateY="-20.0" wrappingWidth="172.0" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Separator layoutY="228.0" prefHeight="9.0" prefWidth="832.0" />
+            <Label fx:id="main_heading1" alignment="CENTER" layoutY="217.0" prefHeight="11.0" prefWidth="43.0" style="-fx-background-color: lightblue; -fx-background-radius: 20 20 0 0;" text="View" textFill="#5d7373">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets left="200.0" top="10.0" />
+         </BorderPane.margin>
+      </Pane>
+   </center>
 </BorderPane>

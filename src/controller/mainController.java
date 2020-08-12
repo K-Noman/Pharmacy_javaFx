@@ -1,5 +1,6 @@
 package controller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,10 @@ import javafx.stage.Stage;
 public class mainController {
 
     @FXML
+    private FontAwesomeIcon iconUser;
+    @FXML
+    private FontAwesomeIcon iconPassword;
+    @FXML
     private Button loginBtn;
     @FXML
     private TextField username;
@@ -29,13 +34,24 @@ public class mainController {
     public void initialize(){
         loginBtn.setDisable(true);
     }
+
     public void loginBtnEnabler(KeyEvent event) {
         boolean disableButton = username.getText().isEmpty() || username.getText().trim().isEmpty();
         loginBtn.setDisable(disableButton);
+        if (username.getText().trim().isEmpty()){
+            iconUser.setVisible(true);
+        }else iconUser.setVisible(false);
+
     }
+    public void iconPasswordEnabler(KeyEvent event) {
+        if (password.getText().trim().isEmpty()){
+            iconPassword.setVisible(true);
+        }else iconPassword.setVisible(false);
+
+    }
+
     public void loginAction(ActionEvent event) {
         String login = null;
-        //String login=(user.isSelected()?"user.fxml":"admin.fxml");
         controller.login login1 =new login(username.getText(),password.getText());
         login= (user.isSelected()?login1.validateUser():login1.validateAdmin());
         changeLoginScreen(event,login);
@@ -59,15 +75,7 @@ public class mainController {
             System.out.println(e+"this");
         }
 
-
-
-
-
-
-
-}
-
-
+    }
 
 
 

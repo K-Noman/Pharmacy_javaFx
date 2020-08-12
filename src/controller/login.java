@@ -55,6 +55,7 @@ public class login {
             psA.setString(2,this.Password);
             ResultSet resultA=psA.executeQuery();
             if (resultA.next()){
+//                return "admin.fxml";
                 return "admin.fxml";
             }
             return "admin.fxml Npt any";

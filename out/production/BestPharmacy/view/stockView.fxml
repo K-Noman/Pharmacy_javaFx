@@ -37,7 +37,7 @@
                               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="productName" labelFloat="true" promptText="Product Name">
+                        <JFXTextField fx:id="productName" labelFloat="true" onKeyPressed="#searchStockAction" promptText="Product Name">
                            <padding>
                               <Insets bottom="7.0" top="5.0" />
                            </padding>
@@ -45,7 +45,7 @@
                               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXButton fx:id="productStock" blendMode="DARKEN" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="7.0" layoutX="69.0" layoutY="207.0" onAction="#searchStockAction" prefHeight="39.0" prefWidth="148.0" text="Search" VBox.vgrow="ALWAYS">
+                        <JFXButton fx:id="productStock" blendMode="DARKEN" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="7.0" layoutX="69.0" layoutY="207.0" onKeyPressed="#searchStockAction" prefHeight="39.0" prefWidth="148.0" text="Search" VBox.vgrow="ALWAYS">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -64,7 +64,7 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                      <columns>
-                        <TableColumn fx:id="stockIDColumn" prefWidth="75.0" text="Product ID" />
+                        <TableColumn fx:id="stockIDColumn" prefWidth="75.0" sortable="false" text="Product ID" />
                         <TableColumn fx:id="stockNameColumn" minWidth="17.0" prefWidth="101.0" text="Product Name" />
                         <TableColumn fx:id="stockSellingPriceColumn" minWidth="17.0" prefWidth="101.0" text="Selling Price " />
                         <TableColumn fx:id="stockCompanyIDColumn" minWidth="17.0" prefWidth="101.0" text="Company ID" />

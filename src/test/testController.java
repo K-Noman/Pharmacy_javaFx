@@ -1,17 +1,18 @@
 package test;
 
+import Classes.dbDataBase;
+import Classes.sales;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Labeled;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
-import search.users;
+import org.controlsfx.control.Notifications;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class testController {
     }
 
 
-    public void SearchTextAction(KeyEvent event) {
+    public void SearchTextAction() {
         System.out.println(dbDataBase.getDataSales() + "kjb k");
         ObservableList<sales> dataList;
         System.out.println(dbDataBase.getDataSales());
@@ -88,6 +89,30 @@ public class testController {
 
 
     public void SearchBUttonAction(ActionEvent event) {
+
+
+
+
+
+
+        if (filterField.getText().trim().isEmpty()) {
+            Notifications.create().show();
+
+
+
+
+        }
+
+
+
+        if (filterField.getText().trim().isEmpty()) {
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.WARNING);
+            a.setTitle("Search Warning");
+            a.setContentText("This is search warning");
+            a.show();
+        }
+
 
     }
 }

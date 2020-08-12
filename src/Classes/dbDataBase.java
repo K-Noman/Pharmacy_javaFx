@@ -1,6 +1,5 @@
-package test;
+package Classes;
 
-import Classes.stock;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -30,6 +29,24 @@ public class dbDataBase {
         return con;
     }
 
+
+
+   public static ObservableList<stock> getDataStock(){
+        Connection con=connect();
+        ObservableList<stock> list=FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps=con.prepareStatement("Select * from stock");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                list.add(new  stock(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
+
+            }con.close();
+        }catch (Exception e){
+            System.out.println("Exception in dbDataBase Stock");
+        }
+        return list;
+
+    }
     public static ObservableList<sales> getDataSales(){
         Connection conn = connect();
         ObservableList<sales> list = FXCollections.observableArrayList();
@@ -47,23 +64,29 @@ public class dbDataBase {
         return list;
     }
 
-   public static ObservableList<stock> getDataStock(){
-        Connection con=connect();
-        ObservableList<stock> list=FXCollections.observableArrayList();
+
+
+
+
+    public static ObservableList<purchase> getDataPurchase(){
+        Connection conn = connect();
+        ObservableList<purchase> list = FXCollections.observableArrayList();
         try {
-            PreparedStatement ps=con.prepareStatement("Select * from stock");
-            ResultSet rs=ps.executeQuery();
+            PreparedStatement ps = conn.prepareStatement("select * from purchase");
+            ResultSet rs = ps.executeQuery();
+
             while (rs.next()){
-                list.add(new  stock(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
+                list.add(new purchase(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
+                        ,rs.getString(9),rs.getString(10),rs.getString(11)));
 
-            }con.close();
-        }catch (Exception e){
-            System.out.println("Exception in dbDataBase Stock");
+            }conn.close();
+        } catch (Exception e) {
         }
-        return list;
+         return list;
+    }
 
 
-   }
+
 
 
 

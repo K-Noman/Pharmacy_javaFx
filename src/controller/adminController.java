@@ -5,21 +5,25 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class adminController {
 
 
     public JFXButton backButton;
-    public BorderPane borderPane;
+    public  BorderPane borderPane;
     public MenuItem employeeView;
     public MenuItem salesView;
     public MenuItem stockView;
     public Label label;
+
 
     public void backButtonAction(ActionEvent event) {
         System.out.println("backButtonAction");
@@ -52,16 +56,13 @@ public class adminController {
         changeScene(event,"salesView");
     }
     public void stockView(ActionEvent event) {
-        System.out.println("stock");
+        System.out.println("Classes.stock");
         changeScene(event,"stockView");
     }
 
-//    public void purchaseView(ActionEvent event) {
-//        System.out.println("Purchase record");
-//
-//    }
 
-    private void changeScene(ActionEvent event,String sceneToSet){
+
+    public void changeScene(ActionEvent event,String sceneToSet){
         System.out.println(sceneToSet);
 
         try {
@@ -70,8 +71,6 @@ public class adminController {
             Parent root= FXMLLoader.load(getClass().getResource(url));
             borderPane.setAlignment(root,Pos.CENTER);
             borderPane.setCenter(root);
-
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -89,4 +88,77 @@ public class adminController {
     public void newCompany(ActionEvent event) {
         changeScene(event,"addNew/companyAdd");
     }
+
+
+
+    public void cons_bt_mi(MouseEvent mouseEvent) {
+
+    }
+
+    public void cons_bt_mo(MouseEvent mouseEvent) {
+
+    }
+
+    public void tax_bt_ac(ActionEvent event) {
+
+    }
+
+    public void tax_bt_mi(MouseEvent mouseEvent) {
+    }
+
+    public void tax_bt_mo(MouseEvent mouseEvent) {
+
+    }
+
+    public void hist_bt_mi(MouseEvent mouseEvent) {
+
+    }
+
+    public void hist_bt_mo(MouseEvent mouseEvent) {
+
+    }
+
+    public void bill_bt_mi(MouseEvent mouseEvent) {
+
+    }
+
+    public void bill_bt_mo(MouseEvent mouseEvent) {
+
+    }
+
+    public void AddEmployeeAction(ActionEvent event) {
+        changeScene(event,"addNew/empAdd");
+
+
+    }
+
+    public void AddPurchaseAction(ActionEvent event) {
+        changeScene(event,"addNew/purchaseAdd");
+
+
+    }
+
+    public void AddCompanyAction(ActionEvent event) {
+        changeScene(event,"addNew/companyAdd");
+
+    }
+
+    public void ViewEmployeeAction(ActionEvent event) {
+        System.out.println("emp");
+        changeScene(event,"empView");
+    }
+
+    public void ViewPurchaseAction(ActionEvent event) {
+        System.out.println("Sales record");
+        changeScene(event,"salesView");
+
+    }
+
+    public void ViewSalesAction(ActionEvent event) {
+        System.out.println("Classes.stock");
+        changeScene(event,"stockView");
+
+    }
+
+
 }

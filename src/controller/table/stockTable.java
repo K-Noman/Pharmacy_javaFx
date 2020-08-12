@@ -71,7 +71,7 @@ public class stockTable {
                 ", PRODUCT_Name='" + PRODUCT_Name + '\'' +
                 ", Selling_Price='" + Selling_Price + '\'' +
                 ", Company_ID='" + Company_ID + '\'' +
-                ", stock='" + stock + '\'' +
+                ", Classes.stock='" + stock + '\'' +
                 '}';
     }
 
