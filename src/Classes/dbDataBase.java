@@ -48,16 +48,16 @@ public class dbDataBase {
 
     }
     public static ObservableList<sales> getDataSales(){
-        Connection conn = connect();
+         Connection con = connect();
         ObservableList<sales> list = FXCollections.observableArrayList();
         try {
-            PreparedStatement ps = conn.prepareStatement("select * from sales");
+            PreparedStatement ps = con.prepareStatement("select * from sales");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
                 list.add(new sales(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6)));
 
-            }conn.close();
+            }con.close();
         } catch (Exception e) {
         }
 

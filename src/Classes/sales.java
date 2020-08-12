@@ -1,6 +1,21 @@
 package Classes;
 
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 public class sales {
+
+
+
+    private static final String Database_URL = "jdbc:oracle:thin:@localhost:1521/orcl";
+    private static final String Database_Pass = "Oracle_1";
+    private static final String Database_Name = "system";
+    private static final String URL = "jdbc:oracle:thin:@localhost:1521/orcl,system,Oracle_1";
+    private static final String Jdbc_Driver = "oracle.jdbc.driver.OracleDriver";
+    private static Connection con = null;
 
     private String PRODUCT_ID;
     private String DOSE;
@@ -8,6 +23,7 @@ public class sales {
     private String PRICE;
     private String AMMONT;
     private String PRODUCT_NAME;
+
 
     public sales(String PRODUCT_ID, String DOSE, String QUANTITY, String PRICE, String AMMONT, String PRODUCT_NAME) {
         this.PRODUCT_ID = PRODUCT_ID;
@@ -18,16 +34,16 @@ public class sales {
         this.PRODUCT_NAME = PRODUCT_NAME;
     }
 
-    @Override
-    public String toString() {
-        return "sales{" +
-                "PRODUCT_ID='" + PRODUCT_ID + '\'' +
-                ", DOSE='" + DOSE + '\'' +
-                ", QUANTITY='" + QUANTITY + '\'' +
-                ", PRICE='" + PRICE + '\'' +
-                ", AMMONT='" + AMMONT + '\'' +
-                ", PRODUCT_NAME='" + PRODUCT_NAME + '\'' +
-                '}';
+    public sales() {
+    }
+
+
+    public String getPRODUCT_NAME() {
+        return PRODUCT_NAME;
+    }
+
+    public void setPRODUCT_NAME(String PRODUCT_NAME) {
+        this.PRODUCT_NAME = PRODUCT_NAME;
     }
 
     public String getPRODUCT_ID() {
@@ -70,11 +86,40 @@ public class sales {
         this.AMMONT = AMMONT;
     }
 
-    public String getPRODUCT_NAME() {
-        return PRODUCT_NAME;
+    @Override
+    public String toString() {
+        return "sales{" +
+                "PRODUCT_ID='" + PRODUCT_ID + '\'' +
+                ", DOSE='" + DOSE + '\'' +
+                ", QUANTITY='" + QUANTITY + '\'' +
+                ", PRICE='" + PRICE + '\'' +
+                ", AMMONT='" + AMMONT + '\'' +
+                ", PRODUCT_NAME='" + PRODUCT_NAME + '\'' +
+                '}';
     }
-
-    public void setPRODUCT_NAME(String PRODUCT_NAME) {
-        this.PRODUCT_NAME = PRODUCT_NAME;
-    }
+//    public static ArrayList<sales> getAll() {
+//        ArrayList<sales> newSalesTable = new ArrayList<>();
+//        try {
+//            Connection con = dbDataBase.connect();
+//            String query = "SELECT * FROM sales";
+//            PreparedStatement ps = con.prepareStatement(query);
+//            ResultSet result = ps.executeQuery();
+//            while (result.next()) {
+//                sales sales = new sales();
+//                sales.setPRODUCT_ID(result.getString(1));
+//                sales.setDOSE(result.getString(2));
+//                sales.setQUANTITY(result.getString(3));
+//                sales.setPRICE(result.getString(4));
+//                sales.setAMMONT(result.getString(5));
+//                sales.setPRODUCT_NAME(result.getString(6));
+//                newSalesTable.add(sales);
+//
+//
+//            }
+//            return newSalesTable;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
 }

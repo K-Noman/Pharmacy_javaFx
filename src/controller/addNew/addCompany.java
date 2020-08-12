@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.controlsfx.control.Notifications;
 
 import java.util.List;
 
@@ -45,10 +46,12 @@ public class addCompany {
     }
 
     public void addCompanyAction(ActionEvent event) {
-        companyTable companyTable=new companyTable(CompanyID.getText(),CompanyName.getText(),CompanyAddress.getText(),CompanyPhone.getText());
-        companyTable.addCompany();
-        companyTableView.getItems().clear();
-        renderCompanyTable();
+        if (validateCompanyInput()){
+            companyTable companyTable=new companyTable(CompanyID.getText(),CompanyName.getText(),CompanyAddress.getText(),CompanyPhone.getText());
+            companyTable.addCompany();
+            companyTableView.getItems().clear();
+            renderCompanyTable();
+        }
 
 
     }
@@ -62,11 +65,35 @@ public class addCompany {
             this.companyAddressColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANYADDRESS"));
             this.companyPhoneColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANYPHONE"));
             companyTableView.getItems().addAll(company);
-        System.out.println(companyTable.getAll());
+
+    }
+
+        private boolean validateCompanyInput(){
+         if (CompanyID.getText().isEmpty()){
+             alert("Enter CompanyID");
+             return false;
+         } else if (CompanyName.getText().isEmpty()) {
+             alert("Enter CompanyName");
+             return false;
+         }else if (CompanyAddress.getText().isEmpty()) {
+             alert("Enter CompanyAddress");
+             return false;
+         }else if (CompanyName.getText().isEmpty()) {
+             alert("Enter CompanyPhone");
+             return false;
+         }
+         return true;
+
 
 
         }
 
+    public void alert(String title) {
+        Notifications.create()
+                .title("Employee")
+                .text(title)
+                .showWarning();
+    }
 
 
 }

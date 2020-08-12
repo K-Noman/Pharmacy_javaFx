@@ -1,36 +1,36 @@
 package controller;
 
+import Classes.dbDataBase;
+import Classes.sales;
 import com.jfoenix.controls.JFXButton;
-import controller.table.salesTable;
-import javafx.event.ActionEvent;
+import com.jfoenix.controls.JFXTextField;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import java.util.ArrayList;
-import java.util.List;
+import javafx.scene.input.KeyEvent;
 
 public class salesController {
 
 
+    @FXML
+    private JFXTextField searchSale;
+    @FXML
+    private TableView userSalesTable;
+    @FXML
+    private TableColumn<sales,String> productIDColumn;
+    @FXML
+    private TableColumn<sales,String> productNameColumn;
+    @FXML
+    private TableColumn<sales,String> productQuantityColumn;
+    @FXML
+    private TableColumn<sales,String> productPriceColumn;
+    @FXML
+    private TableColumn<sales,String> productBillColumn;
 
-    @FXML
-    private JFXButton searchSales;
-    @FXML
-    private TableView salesTableView;
-    @FXML
-    private TableColumn<salesTable,String> productIDColumn;
-    @FXML
-    private TableColumn<salesTable,String> productNameColumn;
-    @FXML
-    private TableColumn<salesTable,String> productDoseColumn;
-    @FXML
-    private TableColumn<salesTable,String> priceColumn;
-    @FXML
-    private TableColumn<salesTable,String> quantityColumn;
-    @FXML
-    private TableColumn<salesTable,String> AmountColumn;
 
 
 
@@ -39,28 +39,47 @@ public class salesController {
 
 
     }
-    public void searchSalesAction(ActionEvent event) {
+    public void searchSalesAction(KeyEvent event) {
+        ObservableList<sales> dataList;
+        System.out.println(dbDataBase.getDataSales());
+        this.productIDColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_ID"));
+        this.productNameColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_NAME"));
+        this.productQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("QUANTITY"));
+        this.productPriceColumn.setCellValueFactory(new PropertyValueFactory<>("PRICE"));
+        this.productBillColumn.setCellValueFactory(new PropertyValueFactory<>("AMMONT"));
+        dataList = dbDataBase.getDataSales();
+        userSalesTable.setItems(dataList);
+        FilteredList<sales> filteredData = new FilteredList<>(dataList, asv -> true);
 
-
-
-
-
-
-
+        searchSale.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(product -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (product.getPRODUCT_NAME().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                }
+//                else if (product.getPRODUCT_Name().toLowerCase().indexOf(lowerCaseFilter)!= -1)
+//                    return true;
+                else
+                    return false;
+            });
+        });
+        SortedList<sales> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(userSalesTable.comparatorProperty());
+        userSalesTable.setItems(sortedData);
     }
 
-   private    void renderSalesTable(){
-       List<salesTable> sales=salesTable.getAll();
-       System.out.println(salesTable.getAll());
-       System.out.println(sales+" bjh");
-
-       this.productIDColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_ID"));
-       this.productNameColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_NAME"));
-       this.productDoseColumn.setCellValueFactory(new PropertyValueFactory<>("DOSE"));
-       this.quantityColumn.setCellValueFactory(new PropertyValueFactory<>("QUANTITY"));
-       this.priceColumn.setCellValueFactory(new PropertyValueFactory<>("PRICE"));
-       this.AmountColumn.setCellValueFactory(new PropertyValueFactory<>("AMMONT"));
-       salesTableView.getItems().addAll(sales);
+    public void renderSalesTable(){
+        ObservableList<sales> dataList ;
+        this.productIDColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_ID"));
+        this.productNameColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_NAME"));
+        this.productQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("QUANTITY"));
+        this.productPriceColumn.setCellValueFactory(new PropertyValueFactory<>("PRICE"));
+        this.productBillColumn.setCellValueFactory(new PropertyValueFactory<>("AMMONT"));
+        dataList=dbDataBase.getDataSales();
+        userSalesTable.getItems().addAll(dataList);
     }
 
 

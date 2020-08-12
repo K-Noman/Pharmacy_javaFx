@@ -2,12 +2,12 @@ package controller.addNew;
 
 import com.jfoenix.controls.JFXTextField;
 import controller.table.employeeTable;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.controlsfx.control.Notifications;
 
 import java.sql.*;
 import java.util.List;
@@ -53,23 +53,22 @@ public class addEmployee {
         String EMAIL = this.empEmail.getText();
         String PASSWORD = this.empPassword.getText();
 
-        System.out.println(EMPID);
-        System.out.println(firstname);
-        System.out.println(LASTNAME);
-        System.out.println(MOBILE);
-        System.out.println(EMAIL);
-        System.out.println(PASSWORD);
-        employeeTable employeeTable = new employeeTable(EMPID, firstname, LASTNAME, MOBILE, EMAIL, PASSWORD);
-        employeeTable.saveEmployee();
-        employeeView.getItems().clear();
-        clearView();
-        renderTable();
-        System.out.println(employeeTable.getAll());
+        if (validateEmployeeData()) {
+            employeeTable employeeTable = new employeeTable(EMPID, firstname, LASTNAME, MOBILE, EMAIL, PASSWORD);
+            employeeTable.saveEmployee();
+            employeeView.getItems().clear();
+            clearView();
+            renderTable();
+            System.out.println(employeeTable.getAll());
+
+
+        }
+
 
 
     }
 
-    public  void renderTable() {
+    public void renderTable() {
         List<employeeTable> employee = employeeTable.getAll();
         this.empIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.empNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -92,8 +91,49 @@ public class addEmployee {
         empPassword.clear();
     }
 
+    private boolean validateEmployeeData() {
+        if (empID.getText().isEmpty()){
+            alert("enter id") ;
+            return false;
+        }
+        else if (empName.getText().isEmpty()){
+            alert("Enter Name");
+            return false;
+        }
+        else if (empLastName.getText().isEmpty()){
+            alert("Enter empLastName");
+            return false;
+        }
+        else if (empMobile.getText().isEmpty()){
+            alert("Enter empMobile");
+            return false;
+        }
+        else if (empEmail.getText().isEmpty()){
+            alert("Enter empEmail");
+            return false;
+        }
+        else if (empPassword.getText().isEmpty()){
+            alert("Enter empPassword");
+            return false;
+        }
+         return true;
+
+    }
+
+    public void alert(String title) {
+        Notifications.create()
+                .title("Employee")
+                .text(title)
+                .showWarning();
+    }
 
 }
+
+
+
+
+
+
 
 
 
