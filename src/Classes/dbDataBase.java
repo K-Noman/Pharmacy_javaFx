@@ -3,10 +3,9 @@ package Classes;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class dbDataBase {
     private static final String Database_URL = "jdbc:oracle:thin:@localhost:1521/orcl";
@@ -30,59 +29,113 @@ public class dbDataBase {
     }
 
 
-
-   public static ObservableList<stock> getDataStock(){
-        Connection con=connect();
-        ObservableList<stock> list=FXCollections.observableArrayList();
+    public static ObservableList<stock> getDataStock() {
+        Connection con = connect();
+        ObservableList<stock> list = FXCollections.observableArrayList();
         try {
-            PreparedStatement ps=con.prepareStatement("Select * from stock");
-            ResultSet rs=ps.executeQuery();
-            while (rs.next()){
-                list.add(new  stock(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
+            PreparedStatement ps = con.prepareStatement("Select * from stock");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new stock(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 
-            }con.close();
-        }catch (Exception e){
+            }
+            con.close();
+        } catch (Exception e) {
             System.out.println("Exception in dbDataBase Stock");
         }
         return list;
 
     }
-    public static ObservableList<sales> getDataSales(){
-         Connection con = connect();
+
+    public static ObservableList<sales> getDataSales() {
+        Connection con = connect();
         ObservableList<sales> list = FXCollections.observableArrayList();
         try {
             PreparedStatement ps = con.prepareStatement("select * from sales");
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()){
-                list.add(new sales(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6)));
+            while (rs.next()) {
+                list.add(new sales(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
 
-            }con.close();
+            }
+            con.close();
         } catch (Exception e) {
         }
 
         return list;
     }
 
-
-
-
-
-    public static ObservableList<purchase> getDataPurchase(){
+    public static ObservableList<purchase> getDataPurchase() {
         Connection conn = connect();
         ObservableList<purchase> list = FXCollections.observableArrayList();
         try {
             PreparedStatement ps = conn.prepareStatement("select * from purchase");
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()){
-                list.add(new purchase(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
-                        ,rs.getString(9),rs.getString(10),rs.getString(11)));
+            while (rs.next()) {
+                list.add(new purchase(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)
+                        , rs.getString(9), rs.getString(10), rs.getString(11)));
 
-            }conn.close();
+            }
+            conn.close();
         } catch (Exception e) {
         }
-         return list;
+        return list;
+    }
+
+    public static ObservableList<company> getDataCompany() {
+        Connection con = connect();
+        ObservableList<company> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = con.prepareStatement("Select * from company");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new company(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            }
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+
+
+    }
+
+    public static ObservableList<employee> getDataEmployee() {
+        Connection con = connect();
+        ObservableList<employee> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = con.prepareStatement("Select * from EMP");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new employee(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+
+
+    }
+
+    //TEST
+    public static List<String> getNameColumn() {
+        try {
+            List<sales> li=getDataSales();
+
+            List<String>  col = new ArrayList<String>();
+            for(int i=0 ;i< li.size();i++)
+            {
+                col.add(li.get(i).getPRODUCT_NAME());
+//                System.out.println("col is.."+col.get(i));
+            }
+            return  col;
+
+
+        } catch (Exception e) {
+
+        }
+        return null;
     }
 
 

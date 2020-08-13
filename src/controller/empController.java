@@ -1,46 +1,45 @@
 package controller;
 
+import Classes.dbDataBase;
+import Classes.employee;
+import Classes.sales;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import controller.addNew.addEmployee;
-import controller.table.employeeTable;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.KeyEvent;
 
-import java.util.List;
 
 public class empController {
+    @FXML
+    private JFXTextField empName;
+    @FXML
+    private JFXTextField empID;
 
-
-
-    public JFXTextField empID;
-    public JFXTextField empName;
-    public JFXTextField empLastName;
     @FXML
     private TableView employeeView;
     @FXML
-    private TableColumn<employeeTable, String> empIDColumn;
+    private TableColumn<employee, String> empIDColumn;
     @FXML
-    private TableColumn<employeeTable, String> empNameColumn;
+    private TableColumn<employee, String> empNameColumn;
     @FXML
-    private TableColumn<employeeTable, String> empLastNameColumn;
+    private TableColumn<employee, String> empLastNameColumn;
     @FXML
-    private TableColumn<employeeTable, String> empMobileColumn;
+    private TableColumn<employee, String> empMobileColumn;
     @FXML
-    private TableColumn<employeeTable, String> empEmailColumn;
+    private TableColumn<employee, String> empEmailColumn;
     @FXML
-    private TableColumn<employeeTable, String> empPasswordColumn;
+    private TableColumn<employee, String> empPasswordColumn;
 
-
-
-    addEmployee employee=new addEmployee();
 
     public void initialize() {
-       renderTable();
+        renderTable();
 
     }
 
@@ -51,21 +50,59 @@ public class empController {
     }
 
 
-    private void renderTable(){
-        List<employeeTable> employee = employeeTable.getAll();
+    private void renderTable() {
+        ObservableList<employee> dataList;
         this.empIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.empNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         this.empLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         this.empMobileColumn.setCellValueFactory(new PropertyValueFactory<>("mobile"));
         this.empEmailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         this.empPasswordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
-        employeeView.getItems().addAll(employee);
-        System.out.println(employeeView);
-        System.out.println(employee);
-
+        dataList = dbDataBase.getDataEmployee();
+        employeeView.setItems(dataList);
+        System.out.println(dataList);
 
     }
 
 
+    public void searchEmployee(javafx.scene.input.KeyEvent event ) {
+        System.out.println("event worked");
+        System.out.println(dbDataBase.getDataEmployee());
+        ObservableList<employee> dataList;
+        this.empIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.empNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        this.empLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        this.empMobileColumn.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+        this.empEmailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        this.empPasswordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
+        dataList = dbDataBase.getDataEmployee();
+        employeeView.setItems(dataList);
+        FilteredList<employee> filteredList = new FilteredList<>(dataList, search -> true);
+
+        empID.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(product -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (product.getId().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                }else if (product.getFirstName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                }
+
+                else
+                    return false;
+
+            });
+        });
+        SortedList<employee> employeeSortedList = new SortedList<>(filteredList);
+        employeeSortedList.comparatorProperty().bind(employeeView.comparatorProperty());
+        employeeView.setItems(employeeSortedList);
+
+    }
+
 
 }
+
+

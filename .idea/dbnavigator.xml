@@ -25,9 +25,9 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
-        <schema name="PUBLIC" object-types="function, package, type, sequence, synonym, table, view, materialized view" />
+        <schema name="PUBLIC" object-types="function, view, type, package, synonym, materialized view, sequence, table" />
         <schema name="SYS" object-types="type" />
-        <schema name="SYSTEM" object-types="column, function, package, type, sequence, synonym, table, view, materialized view" />
+        <schema name="SYSTEM" object-types="function, view, type, package, column, synonym, materialized view, sequence, table" />
       </connection>
     </loaded-nodes>
   </component>

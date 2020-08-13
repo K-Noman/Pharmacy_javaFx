@@ -1,14 +1,20 @@
 package controller.addNew;
 
+import Classes.company;
+import Classes.dbDataBase;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import controller.table.companyTable;
 import controller.table.employeeTable;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import org.controlsfx.control.Notifications;
 
 import java.util.List;
@@ -55,7 +61,46 @@ public class addCompany {
 
 
     }
+    public void searchCompany(KeyEvent event) {
+        searchCompanyDate();
 
+    }
+
+    private void searchCompanyDate() {
+        ObservableList dataList;
+        this.companyIDColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANY_ID"));
+        this.companyNameColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANYNAME"));
+        this.companyAddressColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANYADDRESS"));
+        this.companyPhoneColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANYPHONE"));
+        dataList= dbDataBase.getDataCompany();
+        companyTableView.setItems(dataList);
+        FilteredList<company> filteredList=new FilteredList<>(dataList, cev->true);
+
+        CompanyID.textProperty().addListener((observable,oldValue,newValue)->{
+            filteredList.setPredicate(product ->{
+                if (newValue==null||newValue.trim()==null){
+                    return true;
+                }
+                String lowerCaseFilter=newValue.toLowerCase();
+                if (product.getCOMPANY_ID().indexOf(lowerCaseFilter)!=1){
+                    return true;
+                }else if (product.getCOMPANYNAME().indexOf(lowerCaseFilter)!=1){
+                    return true;
+                }
+                else return false;
+
+            });
+            SortedList<company> sortedList =new SortedList<>(filteredList);
+               sortedList.comparatorProperty().bind(companyTableView.comparatorProperty());
+               companyTableView.setItems(sortedList);
+
+
+
+        });
+
+
+
+    }
 
 
     private void renderCompanyTable(){
@@ -94,6 +139,7 @@ public class addCompany {
                 .text(title)
                 .showWarning();
     }
+
 
 
 }

@@ -29,7 +29,7 @@
                               <Insets bottom="100.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <JFXTextField fx:id="CompanyID" labelFloat="true" promptText="Company ID">
+                        <JFXTextField fx:id="CompanyID" labelFloat="true" onKeyPressed="#searchCompany" promptText="Company ID">
                            <padding>
                               <Insets bottom="7.0" top="5.0" />
                            </padding>
