@@ -60,9 +60,8 @@ public class addPurchase {
     }
     private void renderTable(){
        List<purchaseTable> purchase=purchaseTable.getAll();
-        System.out.println(purchase+" giu");
-        System.out.println(purchaseTable.getAll());
-        System.out.println(productTableView);
+        System.out.println("Purchase table rendering ");
+
        this.productIDColumn.setCellValueFactory(new PropertyValueFactory<>("productID"));
        this.productNameColumn.setCellValueFactory(new PropertyValueFactory<>("ProductName"));
        this.productCostPriceColumn.setCellValueFactory(new PropertyValueFactory<>("productCostPrice"));

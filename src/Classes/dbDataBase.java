@@ -28,7 +28,7 @@ public class dbDataBase {
         return con;
     }
 
-
+    //################# Stock Data #################//
     public static ObservableList<stock> getDataStock() {
         Connection con = connect();
         ObservableList<stock> list = FXCollections.observableArrayList();
@@ -46,7 +46,27 @@ public class dbDataBase {
         return list;
 
     }
+    //################# Stock Dop Down
+    public static List<String> getStockNameColumn() {
+        try {
+            List<stock> li= getDataStock();
 
+            List<String>  col = new ArrayList<String>();
+            for(int i=0 ;i< li.size();i++)
+            {
+                col.add(li.get(i).getPRODUCT_Name());
+            }
+            return  col;
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
+
+
+
+    //################# Sales Data #################//
     public static ObservableList<sales> getDataSales() {
         Connection con = connect();
         ObservableList<sales> list = FXCollections.observableArrayList();
@@ -64,7 +84,26 @@ public class dbDataBase {
 
         return list;
     }
+    //################# Sales Dop Down
+    public static List<String> getSalesNameColumn() {
+        try {
+            List<sales> li= getDataSales();
 
+            List<String>  col = new ArrayList<String>();
+            for(int i=0 ;i< li.size();i++)
+            {
+                col.add(li.get(i).getPRODUCT_NAME());
+            }
+            return  col;
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
+
+
+    //################# Purchase Data   #################//
     public static ObservableList<purchase> getDataPurchase() {
         Connection conn = connect();
         ObservableList<purchase> list = FXCollections.observableArrayList();
@@ -82,7 +121,27 @@ public class dbDataBase {
         }
         return list;
     }
+    //################# Purchase Dop Down
+    public static List<String> getPurchaseNameColumn() {
+        try {
+            List<purchase> li= getDataPurchase();
 
+            List<String>  col = new ArrayList<String>();
+            for(int i=0 ;i< li.size();i++)
+            {
+                col.add(li.get(i).getProductName());
+            }
+            return  col;
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
+
+
+
+    //################# Company Data   #################//
     public static ObservableList<company> getDataCompany() {
         Connection con = connect();
         ObservableList<company> list = FXCollections.observableArrayList();
@@ -100,7 +159,27 @@ public class dbDataBase {
 
 
     }
+    //################# Company Dop Down
+    public static List<String> getCompanyNameColumn() {
+        try {
+            List<company> li= getDataCompany();
 
+            List<String>  col = new ArrayList<String>();
+            for(int i=0 ;i< li.size();i++)
+            {
+                col.add(li.get(i).getCOMPANYNAME());
+            }
+            return  col;
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
+
+
+
+    //################# Employee Data   #################//
     public static ObservableList<employee> getDataEmployee() {
         Connection con = connect();
         ObservableList<employee> list = FXCollections.observableArrayList();
@@ -117,26 +196,26 @@ public class dbDataBase {
 
 
     }
-
-    //TEST
-    public static List<String> getNameColumn() {
+    //################# Employee Dop Down
+    public static List<String> getEmployeeNameColumn() {
         try {
-            List<sales> li=getDataSales();
+            List<employee> li= getDataEmployee();
 
             List<String>  col = new ArrayList<String>();
             for(int i=0 ;i< li.size();i++)
             {
-                col.add(li.get(i).getPRODUCT_NAME());
-//                System.out.println("col is.."+col.get(i));
+                col.add(li.get(i).getFirstName());
             }
             return  col;
-
-
         } catch (Exception e) {
 
         }
         return null;
     }
+
+
+
+
 
 
 

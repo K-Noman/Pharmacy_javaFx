@@ -32,8 +32,8 @@ public class testController implements Initializable {
         renderTable();
 
         System.out.println("initialized");
-        System.out.println(dbDataBase.getNameColumn());
-        TextFields.bindAutoCompletion(SearchID,dbDataBase.getNameColumn());
+        System.out.println(dbDataBase.getSalesNameColumn());
+        TextFields.bindAutoCompletion(SearchID,dbDataBase.getSalesNameColumn());
 
 
 

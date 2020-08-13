@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import org.controlsfx.control.textfield.TextFields;
 
 public class salesController {
 
@@ -36,6 +37,7 @@ public class salesController {
 
     public void initialize(){
         renderSalesTable();
+        TextFields.bindAutoCompletion(searchSale,dbDataBase.getSalesNameColumn());
 
 
     }

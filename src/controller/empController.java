@@ -2,8 +2,6 @@ package controller;
 
 import Classes.dbDataBase;
 import Classes.employee;
-import Classes.sales;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -13,15 +11,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
+import org.controlsfx.control.textfield.TextFields;
 
 
 public class empController {
     @FXML
     private JFXTextField empName;
-    @FXML
-    private JFXTextField empID;
-
     @FXML
     private TableView employeeView;
     @FXML
@@ -40,6 +35,7 @@ public class empController {
 
     public void initialize() {
         renderTable();
+        TextFields.bindAutoCompletion(empName,dbDataBase.getEmployeeNameColumn());
 
     }
 
@@ -60,14 +56,12 @@ public class empController {
         this.empPasswordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
         dataList = dbDataBase.getDataEmployee();
         employeeView.setItems(dataList);
-        System.out.println(dataList);
+        System.out.println("Rendering Employee Table");
 
     }
 
 
     public void searchEmployee(javafx.scene.input.KeyEvent event ) {
-        System.out.println("event worked");
-        System.out.println(dbDataBase.getDataEmployee());
         ObservableList<employee> dataList;
         this.empIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.empNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -79,7 +73,7 @@ public class empController {
         employeeView.setItems(dataList);
         FilteredList<employee> filteredList = new FilteredList<>(dataList, search -> true);
 
-        empID.textProperty().addListener((observable, oldValue, newValue) -> {
+        empName.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredList.setPredicate(product -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;

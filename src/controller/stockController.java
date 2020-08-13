@@ -12,6 +12,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class stockController {
 
     public void initialize(){
         renderStockTable();
+        TextFields.bindAutoCompletion(productName,dbDataBase.getStockNameColumn());
     }
 
     public void searchStockAction(javafx.scene.input.KeyEvent event) {
