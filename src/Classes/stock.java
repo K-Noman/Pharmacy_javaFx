@@ -8,6 +8,10 @@ public class stock {
     private String Company_ID;
     private String stock;
 
+    public stock() {
+
+    }
+
     @Override
     public String toString() {
         return "stock{" +

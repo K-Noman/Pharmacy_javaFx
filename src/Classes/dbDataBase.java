@@ -217,6 +217,155 @@ public class dbDataBase {
 
 
 
+    //################# TEMP Data   #################//
+    public static ObservableList<TEMP> getDataTEMP() {
+        Connection con = connect();
+        ObservableList<TEMP> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = con.prepareStatement("Select * from TEMP");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new TEMP(rs.getString(1), rs.getString(2), rs.getString(3)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+
+
+    }
+    //################# TEMP Name Down
+    public static List<String> getTEMPNameColumn() {
+        try {
+            List<TEMP> li= getDataTEMP();
+
+            List<String>  col = new ArrayList<String>();
+            for(int i=0 ;i< li.size();i++)
+            {
+                col.add(li.get(i).getNAME());
+            }
+            return  col;
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+    //################# TEMP Quantity Down
+    public static List<String> getTEMPQuantityColumn() {
+        try {
+            List<TEMP> li= getDataTEMP();
+
+            List<String>  col = new ArrayList<String>();
+            for(int i=0 ;i< li.size();i++)
+            {
+                col.add(li.get(i).getQUANTITY());
+            }
+            return  col;
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+    //################# TEMP Total Down
+    public static List<String> getTEMPTotalColumn() {
+        try {
+            List<TEMP> li= getDataTEMP();
+
+            List<String>  col = new ArrayList<String>();
+            for(int i=0 ;i< li.size();i++)
+            {
+                col.add(li.get(i).getTOTAL());
+            }
+            return  col;
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
+
+    //################# FIND STOCK   #################//
+    public static String findStock(String with) {
+        Connection con = connect();
+        String record = new String();
+        try {
+
+
+            String  sComplete = with.trim()+"%";
+//            PreparedStatement ps = con.prepareStatement("select "+toFind+" from " +tableName+ " where "+with+" LIKE ? ");
+            PreparedStatement ps = con.prepareStatement("select stock from stock where Product_name like ? ");
+            ps.setString(1,sComplete);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                record=rs.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return record;
+    }
+
+    //################# FIND SellingPrice   #################//
+    public static String findSellingPrice(String Product_ID) {
+        Connection con = connect();
+        String record = new String();
+        try {
+
+
+            String  sComplete = Product_ID.trim();
+            PreparedStatement ps = con.prepareStatement("select selling_price from stock where product_ID= ? ");
+            ps.setString(1,sComplete);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                record=rs.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return record;
+    }
+    //################# FIND ID   #################//
+    public static String findSearchID(String name) {
+        Connection con = connect();
+        String s = new String();
+        try {
+            String  sp = name+"%";
+            PreparedStatement ps = con.prepareStatement("select product_ID from Stock where PRODUCT_NAME LIKE ? ");
+            ps.setString(1,sp);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                s=rs.getString(1);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return s;
+    }
+
+
+
+
+    //################# Insert into TEMP   #################//
+    public static void insertIntoTemp() {
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

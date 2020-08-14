@@ -13,7 +13,7 @@ public class Main extends Application {
         //MAIN
 //        Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
         //Admin
-        Parent root = FXMLLoader.load(getClass().getResource("/view/admin.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/view/admin.fxml"));
         //test
 //        Parent root = FXMLLoader.load(getClass().getResource("/test/test.fxml"));
         //Add Employee
@@ -21,6 +21,8 @@ public class Main extends Application {
 
         // user
 //        Parent root = FXMLLoader.load(getClass().getResource("/view/user.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/user/userSalesTab.fxml"));
+
         //Dashboard
 //        Parent root = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
         primaryStage.setTitle("Pharmacy ");

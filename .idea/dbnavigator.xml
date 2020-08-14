@@ -25,15 +25,15 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
-        <schema name="PUBLIC" object-types="function, view, type, package, synonym, materialized view, sequence, table" />
+        <schema name="PUBLIC" object-types="materialized view, package, sequence, synonym, type, table, view, function" />
         <schema name="SYS" object-types="type" />
-        <schema name="SYSTEM" object-types="function, view, type, package, column, synonym, materialized view, sequence, table" />
+        <schema name="SYSTEM" object-types="materialized view, package, sequence, synonym, column, type, table, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
-      <console name="Pharmacy" type="STANDARD" schema="SYSTEM" session="Main">select * from SALES;
+      <console name="Pharmacy" type="STANDARD" schema="SYSTEM" session="Main"><![CDATA[select * from SALES;
 select * from DRUGS;
 select * from EMP;
 select * from COMPANY;
@@ -41,10 +41,11 @@ select * from PURCHASE;
 select * from USERS;
 select * from P_ADMIN;
 select * from Stock;
+select * from TEMP;
 
 
 
-insert into P_ADMIN values (&quot;admin&quot;,&quot;admin&quot;);</console>
+insert into P_ADMIN values ("admin","admin");]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
