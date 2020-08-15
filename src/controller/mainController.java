@@ -68,7 +68,7 @@ public class mainController {
             String url="../view/"+nameToLoad;
             Parent root = FXMLLoader.load(getClass().getResource(url));
             Stage stage=(Stage) loginBtn.getScene().getWindow();
-            Scene scene= new Scene(root,1000,600);
+            Scene scene= new Scene(root);
             stage.setScene(scene);
 
         }catch (Exception e){

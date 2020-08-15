@@ -1,6 +1,6 @@
 package Classes;
 
-public class TEMP {
+public  class TEMP {
     private String NAME;
     private String QUANTITY;
     private String TOTAL;

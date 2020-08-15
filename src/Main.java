@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         //MAIN
-//        Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
         //Admin
 //        Parent root = FXMLLoader.load(getClass().getResource("/view/admin.fxml"));
         //test
@@ -21,7 +21,7 @@ public class Main extends Application {
 
         // user
 //        Parent root = FXMLLoader.load(getClass().getResource("/view/user.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/view/user/userSalesTab.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/view/user/userSalesTab.fxml"));
 
         //Dashboard
 //        Parent root = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));

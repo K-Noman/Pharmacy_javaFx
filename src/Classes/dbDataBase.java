@@ -2,6 +2,8 @@ package Classes;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -219,9 +221,10 @@ public class dbDataBase {
 
     //################# TEMP Data   #################//
     public static ObservableList<TEMP> getDataTEMP() {
-        Connection con = connect();
+
         ObservableList<TEMP> list = FXCollections.observableArrayList();
         try {
+            Connection con = connect();
             PreparedStatement ps = con.prepareStatement("Select * from TEMP");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -267,16 +270,20 @@ public class dbDataBase {
         return null;
     }
     //################# TEMP Total Down
-    public static List<String> getTEMPTotalColumn() {
+    public static String getTEMPTotalColumn() {
         try {
-            List<TEMP> li= getDataTEMP();
+            Connection con=connect();
+            PreparedStatement st=con.prepareStatement("SELECT SUM(TOTAL ) from temp");
+            ResultSet rs= st.executeQuery();
+            String s = null;
 
-            List<String>  col = new ArrayList<String>();
-            for(int i=0 ;i< li.size();i++)
-            {
-                col.add(li.get(i).getTOTAL());
+            if (rs.next()){
+                s=rs.getString(1);
             }
-            return  col;
+
+            return s;
+
+
         } catch (Exception e) {
 
         }
@@ -348,14 +355,68 @@ public class dbDataBase {
 
 
     //################# Insert into TEMP   #################//
-    public static void insertIntoTemp() {
+    public static boolean insertIntoTemp(String name,String quantity,double total) {
+        try {
+            Connection con=connect();
 
+            PreparedStatement stmt = con.prepareStatement("insert into TEMP (NAME, QUANTITY, TOTAL) values(?,? ,?)");
+            stmt.setString(1,name);
+            stmt.setString(2,quantity);
+            stmt.setDouble(3,total);
 
+            int i = stmt.executeUpdate();
+            System.out.println(i + " records inserted into TEMP table ");
+            con.close();
+            return true;
 
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }return false;
 
 
     }
 
+public static void removeItem(){
+
+
+    try {
+        Connection connection=connect();
+      PreparedStatement stmt = connection.prepareStatement("truncate table TEMP");
+
+        stmt.execute();
+    } catch (Exception e){
+        e.printStackTrace();
+    }
+
+
+}
+
+    //################# Insert into TEMP   #################//
+    public  static boolean insertIntoSales(String id,String name ,String quantity,String price,String bill  ) {
+        try {
+            Connection con=connect();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Sure insert into sales ", ButtonType.OK);
+            alert.setHeaderText("CONFIRMATION");
+            alert.setTitle("CONFIRMATION");
+            alert.show();
+
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO SALES(PRODUCT_ID,  QUANTITY, PRICE, AMMONT,PRODUCT_NAME) VALUES (?, ?, ?, ?, ?)");
+            stmt.setString(1,id);
+            stmt.setString(2, quantity);
+            stmt.setString(3, price);
+            stmt.setString(4,bill );
+            stmt.setString(5,name);
+             int i= stmt.executeUpdate();
+            System.out.println(i + " records inserted into Sales  table from User ");
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }return false;
+
+    }
 
 
 

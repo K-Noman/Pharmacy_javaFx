@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
 
 <SplitPane dividerPositions="0.68" orientation="VERTICAL" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addNew.salesTabController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
-            <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
                         <VBox layoutX="10.0" layoutY="31.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXTextField fx:id="productName" labelFloat="true" layoutX="10.0" layoutY="31.0" onKeyPressed="#searchStockAction" onKeyReleased="#fillStock" prefHeight="34.0" prefWidth="156.0" promptText="Product Name">
+                              <JFXTextField fx:id="productName" labelFloat="true" layoutX="10.0" layoutY="31.0" onKeyPressed="#searchStockAction" onKeyReleased="#fillStock" prefHeight="34.0" prefWidth="156.0" promptText="Product Name" VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -28,7 +27,7 @@
                                     <Insets bottom="8.0" left="10.0" right="10.0" top="60.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXTextField fx:id="inStock" editable="false" labelFloat="true" layoutX="10.0" layoutY="89.0" onMouseClicked="#mouseClick" prefHeight="34.0" prefWidth="156.0" promptText="In Stock ">
+                              <JFXTextField fx:id="inStock" editable="false" labelFloat="true" layoutX="10.0" layoutY="89.0" prefHeight="34.0" prefWidth="156.0" promptText="In Stock " VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -36,7 +35,7 @@
                                     <Insets bottom="8.0" left="10.0" right="10.0" top="10.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXTextField fx:id="quantity" labelFloat="true" layoutX="10.0" layoutY="123.0" prefHeight="34.0" prefWidth="156.0" promptText="Quantity">
+                              <JFXTextField fx:id="quantity" labelFloat="true" layoutX="10.0" layoutY="123.0" prefHeight="34.0" prefWidth="156.0" promptText="Quantity" VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -44,7 +43,7 @@
                                     <Insets bottom="8.0" left="10.0" right="10.0" top="10.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <JFXButton fx:id="btnSubmit" onMouseClicked="#addProducts" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #8ceda6; -fx-background-radius: 25;" text="Add" textFill="#132510" wrapText="true">
+                              <JFXButton fx:id="btnSubmit" onMouseClicked="#addProducts" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #8ceda6; -fx-background-radius: 25;" text="Add" textFill="#132510" wrapText="true" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="100.0" right="10.0" top="40.0" />
                                  </VBox.margin>
@@ -52,7 +51,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton fx:id="print" prefHeight="35.0" prefWidth="111.0" style="-fx-background-color: #55d477; -fx-background-radius: 20;" text="Print Recipet" wrapText="true">
+                              <JFXButton fx:id="print" onAction="#clearTEMP" prefHeight="35.0" prefWidth="111.0" style="-fx-background-color: #55d477; -fx-background-radius: 20;" text="Generate Recipet" wrapText="true" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="100.0" right="10.0" top="20.0" />
                                  </VBox.margin>
@@ -61,39 +60,32 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="283.0" prefWidth="944.0" scaleShape="false">
+                  <AnchorPane prefHeight="402.0" prefWidth="752.0">
                      <children>
-                        <TableView fx:id="userSalesTable" layoutX="400.0" prefHeight="79.0" prefWidth="385.0">
+                        <TableView fx:id="userSalesTable" layoutX="14.0" layoutY="351.0" opacity="0.0" prefHeight="41.0" prefWidth="96.0">
                           <columns>
                             <TableColumn fx:id="productIDColumn" prefWidth="75.0" text="Product ID" />
-                            <TableColumn fx:id="productNameColumn" minWidth="45.0" prefWidth="101.0" text="Product Name" />
-                              <TableColumn fx:id="productQuantityColumn" prefWidth="75.0" text="Quantity" />
-                              <TableColumn fx:id="productPriceColumn" prefWidth="75.0" text="Price" />
-                              <TableColumn fx:id="productBillColumn" prefWidth="75.0" text="Bill" />
+                            <TableColumn fx:id="productNameColumn" minWidth="45.0" prefWidth="101.0" text="Product Name" visible="false" />
+                              <TableColumn fx:id="productQuantityColumn" prefWidth="24.0" text="Quantity" />
+                              <TableColumn fx:id="productPriceColumn" minWidth="0.0" prefWidth="0.0" text="Price" />
+                              <TableColumn fx:id="productBillColumn" prefWidth="52.0" text="Bill" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8c9c9" height="127.0" layoutX="231.0" layoutY="82.0" stroke="TRANSPARENT" strokeType="INSIDE" width="624.0" />
-                        <Label layoutX="158.0" layoutY="23.0" text="Enter Sale">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dbddb5" height="155.0" layoutX="233.0" layoutY="98.0" stroke="TRANSPARENT" strokeType="INSIDE" width="602.0" AnchorPane.bottomAnchor="149.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="127.0" AnchorPane.topAnchor="98.0" />
+                        <VBox fx:id="namesListVBox" layoutX="245.0" layoutY="138.0" prefHeight="110.0" prefWidth="300.0" />
+                        <VBox fx:id="quantityListVBox" layoutX="555.0" layoutY="138.0" prefHeight="110.0" prefWidth="100.0" />
+                        <VBox fx:id="priceListVBox" layoutX="665.0" layoutY="138.0" prefHeight="110.0" prefWidth="100.0" />
+                        <Label layoutX="245.0" layoutY="112.0" prefHeight="17.0" prefWidth="86.0" text="Product Name" />
+                        <Label layoutX="555.0" layoutY="112.0" prefHeight="17.0" prefWidth="86.0" text="Quantity" />
+                        <Label layoutX="665.0" layoutY="112.0" prefHeight="17.0" prefWidth="150.0" text="Total Price(£) inc. VAT" />
+                        <JFXTextField fx:id="bill" editable="false" focusColor="#ed0505" labelFloat="true" layoutX="680.0" layoutY="233.0" prefHeight="31.0" prefWidth="121.0" unFocusColor="#ff6a6a">
                            <font>
-                              <Font size="22.0" />
+                              <Font size="15.0" />
                            </font>
-                        </Label>
-                        <TextField fx:id="priceField" editable="false" layoutX="76.0" layoutY="136.0" />
-                        <Label layoutX="14.0" layoutY="140.0" prefHeight="17.0" prefWidth="62.0" text="Price (£)" />
-                        <TextField fx:id="quantityField" layoutX="76.0" layoutY="177.0" />
-                        <Label layoutX="14.0" layoutY="181.0" prefHeight="17.0" prefWidth="62.0" text="Quantity" />
-                        <Button layoutX="76.0" layoutY="221.0" mnemonicParsing="false" text="Add" />
-                        <VBox fx:id="namesListVBox" layoutX="246.0" layoutY="121.0" prefHeight="47.0" prefWidth="300.0" />
-                        <VBox fx:id="quantityListVBox" layoutX="556.0" layoutY="121.0" prefHeight="41.0" prefWidth="100.0" />
-                        <VBox fx:id="priceListVBox" layoutX="666.0" layoutY="121.0" prefHeight="41.0" prefWidth="100.0" />
-                        <Label layoutX="246.0" layoutY="95.0" prefHeight="17.0" prefWidth="86.0" text="Product Name" />
-                        <Label layoutX="556.0" layoutY="95.0" prefHeight="17.0" prefWidth="86.0" text="Quantity" />
-                        <Label layoutX="666.0" layoutY="95.0" prefHeight="17.0" prefWidth="150.0" text="Total Price(£) inc. VAT" />
-                        <Button fx:id="btnFinalise" layoutX="742.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#sale" prefHeight="25.0" prefWidth="86.0" text="Finalise Sale" />
-                        <JFXTextField fx:id="productChoice" labelFloat="true" layoutX="76.0" layoutY="100.0" onAction="#updatePrice" prefHeight="25.0" prefWidth="149.0" promptText="Product" />
+                        </JFXTextField>
                      </children>
                   </AnchorPane>
               </items>

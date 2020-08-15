@@ -23,13 +23,8 @@ import java.util.List;
 public class salesTabController {
 
     @FXML
-    private JFXTextField productNameIn;
-    @FXML
-    private TextField priceField;
-    @FXML
-    private TextField quantityField;
-    @FXML
-    private Button btnSubmit;
+    private JFXTextField bill;
+
     @FXML
     private VBox namesListVBox;
     @FXML
@@ -81,6 +76,7 @@ public class salesTabController {
         renderSalesTable();
         renderStockTable();
         TextFields.bindAutoCompletion(productName,dbDataBase.getStockNameColumn());
+//        dbDataBase.clearTEMP();
     }
 
 
@@ -177,31 +173,43 @@ public class salesTabController {
 
     @FXML
     private void addProducts() {
-        updateBasket();
-//        dbDataBase.insertIntoTemp();
-        System.out.println(dbDataBase.findSearchID(productName.getText()));
-        System.out.println(dbDataBase.findSellingPrice(dbDataBase.findSearchID(productName.getText())));
 
 
-//        try {
-//            int x = Integer.parseInt(quantityField.getText());
-//            double i = Double.parseDouble(priceField.getText());
-//        } catch (Exception e) {
-//            Alert alert = new Alert(Alert.AlertType.ERROR, "Please put the correct data types in the fields"
-//                    , ButtonType.CLOSE);
-//            alert.setHeaderText("Error");
-//            alert.setTitle("Error");
-//            alert.show();
-//            return;
-//        }
-//
-//        if (Integer.parseInt(quantityField.getText()) <= 0) {
-//            Alert alert = new Alert(Alert.AlertType.ERROR, "Cannot have less than 0 quantity", ButtonType.CLOSE);
-//            alert.setHeaderText("Error");
-//            alert.setTitle("Error");
-//            alert.show();
-//            return;
-//        }
+
+        try {
+            if (Integer.parseInt(quantity.getText()) <= 0) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Cannot have less than 0 quantity", ButtonType.CLOSE);
+                alert.setHeaderText("Error");
+                alert.setTitle("Error");
+                alert.show();
+                return;
+            }
+            double total=Double.parseDouble(quantity.getText()) * Double.parseDouble(dbDataBase.findSellingPrice(dbDataBase.findSearchID(productName.getText())));
+            dbDataBase.insertIntoTemp(productName.getText(),quantity.getText(),total);
+
+            String Name=productName.getText().trim();
+            String Id=dbDataBase.findSearchID(Name);
+            String Quantity=quantity.getText().trim();
+            String SellingPrice=dbDataBase.findSellingPrice(Id);
+            String Bill=dbDataBase.getTEMPTotalColumn();
+
+
+            dbDataBase.insertIntoSales(Id,Name,Quantity,SellingPrice,Bill);
+            updateBasket();
+
+
+
+
+
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please put the correct data types in the fields"
+                    , ButtonType.CLOSE);
+            alert.setHeaderText("Error");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
+
 
 
 
@@ -214,38 +222,41 @@ public class salesTabController {
         namesListVBox.getChildren().clear();
         quantityListVBox.getChildren().clear();
         priceListVBox.getChildren().clear();
+        bill.setText(null);
+        clearFields();
 
         for (TEMP ignored : dbDataBase.getDataTEMP()) {
             Label name = new Label(" "+ignored.getNAME());
             Label quantity = new Label("" + ignored.getQUANTITY());
-            Label bill=new Label(""+ignored.getTOTAL());
+            Label amount=new Label(""+ignored.getTOTAL());
+
 
             name.setTooltip(new Tooltip((ignored.getNAME())));
             quantity.setTooltip(new Tooltip("" + ignored.getQUANTITY()));
-            bill.setTooltip(new Tooltip(""+ignored.getTOTAL()));
-//                                                                              price.setTooltip(new Tooltip("" + product.getPrice() * product.getQuantity()));
+            amount.setTooltip(new Tooltip(""+ignored.getTOTAL()));
 
             namesListVBox.getChildren().add(name);
             quantityListVBox.getChildren().add(quantity);
-            priceListVBox.getChildren().add(bill);
-
+            priceListVBox.getChildren().add(amount);
         }
-    }
-
-    public void sale(MouseEvent mouseEvent) {
-
-
-    }
-
-    public void updatePrice(ActionEvent event) {
-
+        bill.setText(dbDataBase.getTEMPTotalColumn());
     }
 
 
-    public void mouseClick(MouseEvent mouseEvent) {
-        System.out.println(valueOfStock());
+    private  void clearFields(){
+        productName.setText(null);
+        inStock.setText(null);
+        quantity.setText(null);
 
     }
 
+    public void clearTEMP(ActionEvent event) {
+        try {
+            dbDataBase.removeItem();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        updateBasket();
 
+    }
 }

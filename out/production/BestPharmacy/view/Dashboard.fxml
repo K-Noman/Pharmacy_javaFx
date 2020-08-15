@@ -56,17 +56,6 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </JFXButton>
-                <JFXButton fx:id="tax_bt" alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#tax_bt_ac" onMouseEntered="#tax_bt_mi" onMouseExited="#tax_bt_mo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0da868; -fx-background-radius: 35 5 5 5;" text="Taxes" textFill="WHITE" GridPane.columnIndex="3">
-                    <font>
-                        <Font name="System Bold" size="16.0" />
-                    </font>
-                    <graphic>
-                        <FontAwesomeIcon fill="WHITE" glyphName="MONEY" size="6em" textAlignment="CENTER" translateY="-20.0" wrappingWidth="172.0" />
-                    </graphic>
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                </JFXButton>
             <FontAwesomeIcon fill="WHITE" glyphName="BOOK" glyphStyle=" " size="8em" textAlignment="CENTER" wrappingWidth="100.0" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="20.0" left="40.0" />
@@ -112,17 +101,6 @@
                </font>
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="FILE" size="6em" textAlignment="CENTER" translateY="-20.0" wrappingWidth="155.0" />
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="tax_bt1" alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#tax_bt_ac" onMouseEntered="#tax_bt_mi" onMouseExited="#tax_bt_mo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0da868; -fx-background-radius: 35 5 5 5;" text="Taxes" textFill="WHITE" GridPane.columnIndex="3">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon fill="WHITE" glyphName="MONEY" size="6em" textAlignment="CENTER" translateY="-20.0" wrappingWidth="172.0" />
                </graphic>
             </JFXButton>
          </children>
