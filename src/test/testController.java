@@ -2,8 +2,10 @@ package test;
 
 
 import Classes.dbDataBase;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -25,6 +27,7 @@ public class testController implements Initializable {
     public TableColumn<sales,String> productQuantityColumn;
     public TableColumn<sales,String> productPriceColumn;
     public TableColumn<sales,String> productBillColumn;
+    public JFXButton add;
 
 
     @Override
@@ -54,5 +57,9 @@ public class testController implements Initializable {
         this.productBillColumn.setCellValueFactory(new PropertyValueFactory<>("AMMONT"));
         dataList = dbDataBase.getDataSales();
         salesTableView.setItems(dataList);
+    }
+
+    public void addaction(ActionEvent event) {
+        dbDataBase.updatePurchase("980","113");
     }
 }

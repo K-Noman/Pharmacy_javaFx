@@ -1,6 +1,7 @@
 package controller;
 
 import Classes.dbDataBase;
+import Classes.sales;
 import Classes.stock;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -21,11 +22,11 @@ public class stockController {
 
     public JFXButton productStock;
     public TableView stockTableView;
-    public TableColumn<salesTable,String> stockIDColumn;
-    public TableColumn<salesTable,String> stockNameColumn;
-    public TableColumn<salesTable,String> stockSellingPriceColumn;
-    public TableColumn<salesTable,String> stockCompanyIDColumn;
-    public TableColumn<salesTable,String> stockStockColumn;
+    public TableColumn<sales,String> stockIDColumn;
+    public TableColumn<sales,String> stockNameColumn;
+    public TableColumn<sales,String> stockSellingPriceColumn;
+    public TableColumn<sales,String> stockCompanyIDColumn;
+    public TableColumn<sales,String> stockStockColumn;
     public JFXTextField productID;
     public JFXTextField productName;
 

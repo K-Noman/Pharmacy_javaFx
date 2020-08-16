@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -202,6 +203,10 @@ public class FXMLDocumentController{
         SortedList<users> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(table_users.comparatorProperty());
         table_users.setItems(sortedData);
+    }
+
+    public void switchPricing(ActionEvent event) {
+
     }
 
 //    @Override

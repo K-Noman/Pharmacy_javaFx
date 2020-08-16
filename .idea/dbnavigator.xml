@@ -23,17 +23,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
-        <schema name="PUBLIC" object-types="synonym, package, function, sequence, type, view, table, materialized view" />
-        <schema name="SYS" object-types="type" />
-        <schema name="SYSTEM" object-types="synonym, package, column, function, sequence, type, view, table, materialized view" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="e2235e12-6a76-452a-87ab-7efcf5a4ba5d">
-      <console name="Pharmacy" type="STANDARD" schema="SYSTEM" session="Main">select * from SALES;
+      <console name="Pharmacy" type="STANDARD" schema="SYSTEM" session="Main"><![CDATA[select * from SALES;
 select * from DRUGS;
 select * from EMP;
 select * from COMPANY;
@@ -45,7 +39,7 @@ select * from TEMP;
 
 
 
-insert into P_ADMIN values (&quot;admin&quot;,&quot;admin&quot;);</console>
+insert into P_ADMIN values ("admin","admin");]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -118,7 +112,7 @@ insert into P_ADMIN values (&quot;admin&quot;,&quot;admin&quot;);</console>
           <charset value="UTF-8" />
           <session-management value="true" />
           <ddl-file-binding value="true" />
-          <database-logging value="true" />
+          <database-logging value="false" />
           <connect-automatically value="true" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="true" />

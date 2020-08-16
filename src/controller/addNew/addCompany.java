@@ -1,11 +1,11 @@
 package controller.addNew;
 
+
 import Classes.company;
 import Classes.dbDataBase;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import controller.table.companyTable;
-import controller.table.employeeTable;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -16,7 +16,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import org.controlsfx.control.Notifications;
-import org.controlsfx.control.textfield.TextFields;
 
 import java.util.List;
 
@@ -53,19 +52,23 @@ public class addCompany {
 
     public void addCompanyAction(ActionEvent event) {
         if (validateCompanyInput()){
-            companyTable companyTable=new companyTable(CompanyID.getText(),CompanyName.getText(),CompanyAddress.getText(),CompanyPhone.getText());
-            companyTable.addCompany();
+            companyTable companytable=new companyTable(CompanyID.getText(),CompanyName.getText(),CompanyAddress.getText(),CompanyPhone.getText());
+            companytable.addCompany();
             companyTableView.getItems().clear();
             renderCompanyTable();
         }
 
 
+
     }
+
+
+
+
     public void searchCompany(KeyEvent event) {
-        searchCompanyDate();
+//        searchCompanyDate();
 
     }
-
     private void searchCompanyDate() {
         ObservableList dataList;
         this.companyIDColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANY_ID"));
@@ -91,8 +94,8 @@ public class addCompany {
 
             });
             SortedList<company> sortedList =new SortedList<>(filteredList);
-               sortedList.comparatorProperty().bind(companyTableView.comparatorProperty());
-               companyTableView.setItems(sortedList);
+            sortedList.comparatorProperty().bind(companyTableView.comparatorProperty());
+            companyTableView.setItems(sortedList);
 
 
 
@@ -104,34 +107,34 @@ public class addCompany {
 
 
     private void renderCompanyTable(){
-            List<companyTable> company = companyTable.getAll();
-            this.companyIDColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANY_ID"));
-            this.companyNameColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANYNAME"));
-            this.companyAddressColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANYADDRESS"));
-            this.companyPhoneColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANYPHONE"));
-            companyTableView.getItems().addAll(company);
+        List<companyTable> companyQ = companyTable.getAll();
+        this.companyIDColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANY_ID"));
+        this.companyNameColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANYNAME"));
+        this.companyAddressColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANYADDRESS"));
+        this.companyPhoneColumn.setCellValueFactory(new PropertyValueFactory<>("COMPANYPHONE"));
+        companyTableView.getItems().addAll(companyQ);
 
     }
 
-        private boolean validateCompanyInput(){
-         if (CompanyID.getText().isEmpty()){
-             alert("Enter CompanyID");
-             return false;
-         } else if (CompanyName.getText().isEmpty()) {
-             alert("Enter CompanyName");
-             return false;
-         }else if (CompanyAddress.getText().isEmpty()) {
-             alert("Enter CompanyAddress");
-             return false;
-         }else if (CompanyName.getText().isEmpty()) {
-             alert("Enter CompanyPhone");
-             return false;
-         }
-         return true;
-
-
-
+    private boolean validateCompanyInput(){
+        if (CompanyID.getText().isEmpty()){
+            alert("Enter CompanyID");
+            return false;
+        } else if (CompanyName.getText().isEmpty()) {
+            alert("Enter CompanyName");
+            return false;
+        }else if (CompanyAddress.getText().isEmpty()) {
+            alert("Enter CompanyAddress");
+            return false;
+        }else if (CompanyName.getText().isEmpty()) {
+            alert("Enter CompanyPhone");
+            return false;
         }
+        return true;
+
+
+
+    }
 
     public void alert(String title) {
         Notifications.create()

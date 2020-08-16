@@ -29,12 +29,27 @@
                               <Insets left="10.0" top="15.0" />
                            </VBox.margin>
                         </Label>
-                        <JFXTextField fx:id="searchSale" labelFloat="true" layoutX="14.0" layoutY="83.0" onKeyPressed="#searchSalesAction" promptText="Sales ID" VBox.vgrow="ALWAYS">
+                        <JFXTextField fx:id="searchSale" labelFloat="true" layoutX="14.0" layoutY="83.0" onKeyPressed="#searchSalesAction" onKeyReleased="#setOthers" promptText="Sales" VBox.vgrow="ALWAYS">
                            <padding>
                               <Insets bottom="7.0" top="5.0" />
                            </padding>
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" top="70.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="numOfSales" editable="false" labelFloat="true" promptText="Number of Sales">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="amountSales" editable="false" labelFloat="true" promptText="Quantity Sold">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="reavinue" labelFloat="true" promptText="Revinue genereted">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                            </VBox.margin>
                         </JFXTextField>
                         <JFXButton fx:id="searchSales" blendMode="DARKEN" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="7.0" layoutX="69.0" layoutY="207.0" prefHeight="39.0" prefWidth="179.0" text="Search Sales" VBox.vgrow="ALWAYS">

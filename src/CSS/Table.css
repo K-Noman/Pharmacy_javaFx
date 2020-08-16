@@ -1,0 +1,10 @@
+/** file: reaper.css
+    place in same directory as RowStyledTable.java */
+.root                             { -fx-font: 8px "Comic Sans MS";    }
+.column-header-background         { -fx-background-color: #81b39e;       }
+.willPayRow                       { -fx-background-color: red;   }
+.wontPayRow                       { -fx-background-color: red;       }
+.willPayCell                      { -fx-background-color: red; }
+.wontPayCell                      { -fx-background-color: red;   }
+.table-row-cell:empty             { -fx-background-color: red;    }
+.table-row-cell:empty .table-cell { -fx-border-width:     0px;         }

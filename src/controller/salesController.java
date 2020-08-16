@@ -18,6 +18,12 @@ public class salesController {
 
 
     @FXML
+    private JFXTextField reavinue;
+    @FXML
+    private JFXTextField amountSales;
+    @FXML
+    private JFXTextField numOfSales;
+    @FXML
     private JFXTextField searchSale;
     @FXML
     private TableView userSalesTable;
@@ -82,8 +88,25 @@ public class salesController {
         this.productBillColumn.setCellValueFactory(new PropertyValueFactory<>("AMMONT"));
         dataList=dbDataBase.getDataSales();
         userSalesTable.getItems().addAll(dataList);
+
     }
 
 
+    private void fillNumOfSales(){
+        numOfSales.setText(dbDataBase.findNumberOfSAles(searchSale.getText()));
+    }
+    private void fillAmountSales(){
+        amountSales.setText(dbDataBase.findSaleAmount(searchSale.getText()));
+    }
+    private void fillRevinue(){
+        reavinue.setText(dbDataBase.findRevinue(searchSale.getText()));
+    }
 
+
+    public void setOthers(KeyEvent event) {
+        fillNumOfSales();
+        fillAmountSales();
+        fillRevinue();
+
+    }
 }

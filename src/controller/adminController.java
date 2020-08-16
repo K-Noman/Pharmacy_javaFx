@@ -161,4 +161,24 @@ public class adminController {
     }
 
 
+    public void updatePurchase(ActionEvent event) {
+        System.out.println("Update Purchase");
+        changeScene(event,"updatePurchase");
+
+    }
+
+    public void updateEmployeeAction(ActionEvent event) {
+        changeScene(event,"updateEmployee");
+
+    }
+
+    public void updatePurchaseAction(ActionEvent event) {
+        changeScene(event,"updatePurchase");
+
+    }
+
+    public void updateEmployee(ActionEvent event) {
+        changeScene(event,"updateEmployee");
+
+    }
 }

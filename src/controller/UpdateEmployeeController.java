@@ -1,5 +1,6 @@
-package controller.addNew;
+package controller;
 
+import Classes.dbDataBase;
 import com.jfoenix.controls.JFXTextField;
 import controller.table.employeeTable;
 import javafx.event.ActionEvent;
@@ -8,11 +9,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.controlsfx.control.Notifications;
+import sun.plugin.dom.html.HTMLBodyElement;
 
-import java.sql.*;
 import java.util.List;
 
-public class addEmployee {
+public class UpdateEmployeeController {
+
     @FXML
     private JFXTextField empID;
     @FXML
@@ -23,6 +25,9 @@ public class addEmployee {
     private JFXTextField empMobile;
     @FXML
     private JFXTextField empPassword;
+    @FXML
+    private JFXTextField empEmail;
+
     @FXML
     private TableView employeeView;
     @FXML
@@ -37,35 +42,11 @@ public class addEmployee {
     private TableColumn<employeeTable, String> empEmailColumn;
     @FXML
     private TableColumn<employeeTable, String> empPasswordColumn;
-    @FXML
-    private JFXTextField empEmail;
+
 
     public void initialize() {
 
         renderTable();
-    }
-
-    public void saveEmployee(ActionEvent event) throws SQLException, ClassNotFoundException {
-        String EMPID = this.empID.getText();
-        String firstname = this.empName.getText();
-        String LASTNAME = this.empLastName.getText();
-        String MOBILE = this.empMobile.getText();
-        String EMAIL = this.empEmail.getText();
-        String PASSWORD = this.empPassword.getText();
-
-        if (validateEmployeeData()) {
-            employeeTable employeeTable = new employeeTable(EMPID, firstname, LASTNAME, MOBILE, EMAIL, PASSWORD);
-            employeeTable.saveEmployee();
-            employeeView.getItems().clear();
-            clearView();
-            renderTable();
-            System.out.println(employeeTable.getAll());
-
-
-        }
-
-
-
     }
 
     public void renderTable() {
@@ -77,19 +58,36 @@ public class addEmployee {
         this.empEmailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         this.empPasswordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
         employeeView.getItems().addAll(employee);
-        System.out.println(employeeView);
-        System.out.println(employee);
+
+
 
     }
 
-    private void clearView() {
-        empID.clear();
-        empName.clear();
-        empLastName.clear();
-        empMobile.clear();
-        empEmail.clear();
-        empPassword.clear();
+
+
+    public void updateEmployee(ActionEvent event) {
+        String EMPID = this.empID.getText();
+        String firstname = this.empName.getText();
+        String LASTNAME = this.empLastName.getText();
+        String MOBILE = this.empMobile.getText();
+        String PASSWORD = this.empPassword.getText();
+        if (validateEmployeeData()) {
+           dbDataBase.updateEmployee(EMPID,firstname,LASTNAME,MOBILE,PASSWORD);
+           employeeView.getItems().clear();
+           renderTable();
+
+        }
+
+
+
+
+
     }
+
+
+
+
+
 
     private   boolean validateEmployeeData() {
         if (empID.getText().isEmpty()){
@@ -108,15 +106,11 @@ public class addEmployee {
             alert("Enter empMobile");
             return false;
         }
-        else if (empEmail.getText().isEmpty()){
-            alert("Enter empEmail");
-            return false;
-        }
         else if (empPassword.getText().isEmpty()){
             alert("Enter empPassword");
             return false;
         }
-         return true;
+        return true;
 
     }
 
@@ -126,14 +120,4 @@ public class addEmployee {
                 .text(title)
                 .showWarning();
     }
-
 }
-
-
-
-
-
-
-
-
-

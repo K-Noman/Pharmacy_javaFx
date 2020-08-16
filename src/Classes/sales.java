@@ -10,12 +10,12 @@ public class sales {
 
 
 
-    private static final String Database_URL = "jdbc:oracle:thin:@localhost:1521/orcl";
-    private static final String Database_Pass = "Oracle_1";
-    private static final String Database_Name = "system";
-    private static final String URL = "jdbc:oracle:thin:@localhost:1521/orcl,system,Oracle_1";
-    private static final String Jdbc_Driver = "oracle.jdbc.driver.OracleDriver";
-    private static Connection con = null;
+//    private static final String Database_URL = "jdbc:oracle:thin:@localhost:1521/orcl";
+//    private static final String Database_Pass = "Oracle_1";
+//    private static final String Database_Name = "system";
+//    private static final String URL = "jdbc:oracle:thin:@localhost:1521/orcl,system,Oracle_1";
+//    private static final String Jdbc_Driver = "oracle.jdbc.driver.OracleDriver";
+//    private static Connection con = null;
 
     private String PRODUCT_ID;
     private String DOSE;
@@ -36,6 +36,8 @@ public class sales {
 
     public sales() {
     }
+
+
 
 
     public String getPRODUCT_NAME() {
