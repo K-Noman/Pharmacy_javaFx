@@ -417,6 +417,7 @@ public class dbDataBase {
 
         } catch (Exception e) {
             e.printStackTrace();
+            Aller("Sales");
 
         }
         return false;
@@ -517,5 +518,19 @@ public class dbDataBase {
 
 
     }
+
+
+
+    private static void Aller(String title){
+    Alert alert = new Alert(Alert.AlertType.ERROR, "Date not operated \n Please put the correct data in the fields"
+            , ButtonType.CLOSE);
+    alert.setHeaderText("Error");
+    alert.setTitle(title);
+    alert.show();
+
+
+}
+
+
 }
 

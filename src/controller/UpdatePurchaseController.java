@@ -5,16 +5,15 @@ import Classes.purchase;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import org.controlsfx.control.textfield.TextFields;
-
-import java.util.List;
 
 public class UpdatePurchaseController {
     @FXML
@@ -82,7 +81,7 @@ public class UpdatePurchaseController {
         this.productExpiryDateColumn.setCellValueFactory(new PropertyValueFactory<>("productExpiryDate"));
         this.productProductionDateColumn.setCellValueFactory(new PropertyValueFactory<>("productProductionDate"));
         this.productPlaceColumn.setCellValueFactory(new PropertyValueFactory<>("productPlace"));
-        this.productCompanyColumn.setCellValueFactory(new PropertyValueFactory<>("productCompany"));
+        this.productCompanyColumn.setCellValueFactory(new PropertyValueFactory<>("productCompanyID"));
         this.productPackColumn.setCellValueFactory(new PropertyValueFactory<>("productPack"));
         this.productQin_One_packColumn.setCellValueFactory(new PropertyValueFactory<>("productQuantity"));
         this.productStockColumn.setCellValueFactory(new PropertyValueFactory<>("productInStock"));

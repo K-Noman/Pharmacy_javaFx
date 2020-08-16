@@ -11,13 +11,18 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 
+import java.io.IOException;
 import java.util.List;
 
 public class salesTabController {
@@ -99,13 +104,6 @@ public class salesTabController {
         dataList = dbDataBase.getDataStock();
         stockTableView.setItems(dataList);
 
-//        List<stockTable> stock=stockTable.getAll();
-//        this.stockIDColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_ID"));
-//        this.stockNameColumn.setCellValueFactory(new PropertyValueFactory<>("PRODUCT_Name"));
-//        this.stockSellingPriceColumn.setCellValueFactory(new PropertyValueFactory<>("Selling_Price"));
-//        this.stockCompanyIDColumn.setCellValueFactory(new PropertyValueFactory<>("Company_ID"));
-//        this.stockStockColumn.setCellValueFactory(new PropertyValueFactory<>("Classes.stock"));
-//        stockTableView.getItems().addAll(stock);
     }
 
 
@@ -183,7 +181,7 @@ public class salesTabController {
                 alert.setTitle("Error");
                 alert.show();
                 return;
-            }
+               }
             double total=Double.parseDouble(quantity.getText()) * Double.parseDouble(dbDataBase.findSellingPrice(dbDataBase.findSearchID(productName.getText())));
             dbDataBase.insertIntoTemp(productName.getText(),quantity.getText(),total);
 
@@ -196,11 +194,6 @@ public class salesTabController {
 
             dbDataBase.insertIntoSales(Id,Name,Quantity,SellingPrice,Bill);
             updateBasket();
-
-
-
-
-
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please put the correct data types in the fields"
                     , ButtonType.CLOSE);
@@ -243,6 +236,8 @@ public class salesTabController {
     }
 
 
+
+
     private  void clearFields(){
         productName.setText(null);
         inStock.setText(null);
@@ -250,7 +245,19 @@ public class salesTabController {
 
     }
 
-    public void clearTEMP(ActionEvent event) {
+    public void generateReceipt(ActionEvent event) {
+
+        try {
+            Stage stage=new Stage();
+            Parent  root = FXMLLoader.load(getClass().getResource("/view/bill.fxml"));
+            stage.setTitle("Bill ");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         try {
             dbDataBase.removeItem();
         }catch (Exception e){
@@ -259,4 +266,7 @@ public class salesTabController {
         updateBasket();
 
     }
+
+
+
 }
