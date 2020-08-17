@@ -91,40 +91,7 @@ public class adminController {
 
 
 
-    public void cons_bt_mi(MouseEvent mouseEvent) {
 
-    }
-
-    public void cons_bt_mo(MouseEvent mouseEvent) {
-
-    }
-
-    public void tax_bt_ac(ActionEvent event) {
-
-    }
-
-    public void tax_bt_mi(MouseEvent mouseEvent) {
-    }
-
-    public void tax_bt_mo(MouseEvent mouseEvent) {
-
-    }
-
-    public void hist_bt_mi(MouseEvent mouseEvent) {
-
-    }
-
-    public void hist_bt_mo(MouseEvent mouseEvent) {
-
-    }
-
-    public void bill_bt_mi(MouseEvent mouseEvent) {
-
-    }
-
-    public void bill_bt_mo(MouseEvent mouseEvent) {
-
-    }
 
     public void AddEmployeeAction(ActionEvent event) {
         changeScene(event,"addNew/empAdd");

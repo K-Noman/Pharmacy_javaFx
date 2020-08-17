@@ -137,12 +137,13 @@
                         <TableColumn fx:id="productCostPriceColumn" text="Cost Price" />
                         <TableColumn fx:id="productSellingPriceColumn" minWidth="17.0" text="Selling Price" />
                         <TableColumn fx:id="productExpiryDateColumn" minWidth="17.0" text="Expiry Date" />
-                        <TableColumn fx:id="productProductionDateColumn" minWidth="100.0" text="Production Date" />
+                        <TableColumn fx:id="productProductionDateColumn" minWidth="100.0" prefWidth="17" maxWidth="17" text="Production Date" />
                         <TableColumn fx:id="productPlaceColumn" minWidth="17.0" text="Place To Hold" />
                         <TableColumn fx:id="productCompanyColumn" minWidth="17.0" text="Company ID" />
                         <TableColumn fx:id="productPackColumn" minWidth="17.0" text="No_Of_Pack" />
                         <TableColumn fx:id="productQin_One_packColumn" minWidth="17.0" text="Qin_One_pack" />
                         <TableColumn fx:id="productStockColumn" minWidth="17.0" text="Stock" />
+
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
