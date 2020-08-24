@@ -1,3 +1,5 @@
+import Classes.stock;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,9 +13,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         //MAIN
-//        Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
         //Admin
-        Parent root = FXMLLoader.load(getClass().getResource("/view/admin.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/view/admin.fxml"));
         //test
 //        Parent root = FXMLLoader.load(getClass().getResource("/test/test.fxml"));
         //Add Employee

@@ -1,5 +1,6 @@
 package controller;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,8 +28,6 @@ public class mainController {
     private PasswordField password;
     @FXML
     private RadioButton user;
-    @FXML
-    private RadioButton admin;
 
 
     public void initialize(){
@@ -60,6 +59,10 @@ public class mainController {
        System.out.println(password.getText());
 
     }
+
+
+
+
 
 
     public void changeLoginScreen(ActionEvent event,String nameToLoad){

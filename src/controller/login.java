@@ -1,5 +1,8 @@
 package controller;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -34,7 +37,8 @@ public class login {
             if (result.next()){
                 return "user.fxml";
             }
-            return "no LOgbkjb in";
+            Aller("invalid Login ");
+            return "no Login in";
 
         }catch (Exception e){
             e.printStackTrace();
@@ -58,6 +62,7 @@ public class login {
 //                return "admin.fxml";
                 return "admin.fxml";
             }
+            Aller("invalid Login ");
             return "admin.fxml Npt any";
 
         }catch (Exception e){
@@ -67,7 +72,15 @@ public class login {
 
 
     }
+    private static void Aller(String title){
+        Alert alert = new Alert(Alert.AlertType.ERROR, "UserName or Password is in correct \n please enter the valid data"
+                , ButtonType.CLOSE);
+        alert.setHeaderText("Error");
+        alert.setTitle(title);
+        alert.show();
 
+
+    }
 
 
 
